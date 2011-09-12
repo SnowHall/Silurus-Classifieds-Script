@@ -1,0 +1,83 @@
+<html>
+<head>
+<title>Silurus Installation</title>
+</head>
+<body>
+<h1>Silurus Installation</h1>
+<h2>Step 1: Create a Database and a User</h2>
+<h3>Using CPanel</h3>
+<ol>
+    <li>Log in to your cPanel.</li>
+    <li>Click MySQL Databases.</li>
+</ol>
+<p><b>Create a database user:</b></p>
+<ol>
+    <li>Choose a username (for example &quot;silurus&quot;) and enter it in the Username field.</li>
+    <li>Choose a database password (ideally containing a combination of upper- and lower-case letters, numbers, and symbols), and input it into the Password field.</li>
+    <li>Click Create user.</li>
+</ol>
+<p><b>Create a Silurus database:</b></p>
+<ol>
+    <li>Choose database name (for example &quot;silurus&quot;) and input it into the &quot;New Database&quot; field. Click Create Database</li>
+</ol>
+<p><b>Add the user to just created database:</b></p>
+<ol>
+    <li>Under Add Users To Your Database, select your Silurus username from the User dropdown list, then select your Silurus database from the Database dropdown list. Make sure ALL is checked under Privileges, then click Add User To Database.</li>
+    <li>When you return to the main MySQL Account Maintenance screen, cPanel will list information about the database you just created. You should see the username you just added to the database (with ALL PRIVILEGES).</li>
+</ol>
+
+<p>Note all the values of hostname, username, databasename, and the password you have chosen. (Note that hostname will usually be localhost.)</p>
+
+<h3>Using MySQL Client</h3>
+<p>If you have shell access to your web server and your MySQL user has the permissions to create MySQL users and databases, you can follow the sample session below to create your username and database.</p>
+<p>$ mysql -u adminusername -p<br>
+Enter password:<br>
+Welcome to the MySQL monitor.&nbsp; Commands end with ; or \g.<br>
+Your MySQL connection id is 5340 to server version: 3.23.54</p>
+
+<p>Type 'help;' or '\h' for help. Type '\c' to clear the buffer.</p>
+
+<p>mysql&gt; CREATE DATABASE databasename;<br>
+Query OK, 1 row affected (0.00 sec)</p>
+
+<p>mysql&gt; GRANT ALL PRIVILEGES ON databasename.* TO &quot;username&quot;@&quot;hostname&quot; IDENTIFIED BY &quot;password&quot;;<br>
+Query OK, 0 rows affected (0.00 sec)</p>
+
+<p>mysql&gt; FLUSH PRIVILEGES;<br>
+Query OK, 0 rows affected (0.01 sec)</p>
+
+<p>mysql&gt; EXIT<br>
+Bye<br>
+$</p>
+<p><b>In the above:</b></p>
+<ul>
+    <li>adminusername will typically be root, unless you have another high-privileged account set up.</li>
+    <li>use silurus for databasename.</li>
+    <li>hostname will usually be localhost.</li>
+    <li>password should be a difficult-to-guess, ideally containing a combination of upper- and lower-case letters, numbers, and symbols.</li>
+</ul>
+<p><b>Note all the values you used for databasename, username, hostname, and password.</b></p>
+
+<h2>Step 2: Upload all files to your web server</h2>
+<h3>In the Root Directory</h3>
+<ul>
+    <li>Use your favorite FTP client to upload all the contents of the public_html folder from silurus-v.X.X.zip archive into the root directory of your web site.</li>
+</ul>
+
+<h3>In a Subdirectory</h3>
+<ul>
+    <li>Create a directory in the root directory of your web site, then use your favorite FTP client to upload the contents of the public_html folder from silurus-v.X.X.zip archive into the created directory.</li>
+</ul>
+<h2>Step 3: Web site Installation</h2>
+<p>Using your favorite web browser navigate to your domain (<a href="http://mysite.com">http://mysite.com</a>/) or to your subdirectory (<a href="http://mysite.com/subdirectory/">http://mysite.com/subdirectory/</a>)</p>
+<p>The installation instruction should appear in your browser's window. Follow them carefully to complete the installation.</p>
+<p>To enter your Administration panel please use the following URL:<br>
+<a href="http://www.mysitedomain.com/admin/"><b>http://www.mysite.com/admin/</b></a></p>
+<p>If you are installing Silurus in a sub-directory then the URL will be:<br>
+<a href="http://www.mysitedomain.com/sub-directory/admin/"><b>http://www.mysite.com/sub-directory/admin/</b></a></p>
+<p>To login to the Administration Panel you should use the information which you have appointed above.</p>
+<p>Default Administrator login - <b>admin</b>, password - <b>admin</b><br>
+Defaul User login - <b>demo</b>, password - <b>demo</b></p>
+
+</body>
+</html>
