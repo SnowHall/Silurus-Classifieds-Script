@@ -15,7 +15,7 @@
 		Contact {if $ap_contact_type==1}Seller{else}Buyer{/if} : {$ap_seller.fname} {$ap_seller.lname}
 	  </td>
 	  <td align="right" valign="top">
-		<a href="javascript:void(0);" onclick="whitesite(); document.getElementById('contact_popover').style.display='none';"><img src="/{$template_path}img/clear.gif" width="40px" height="35px" /></a>
+		<a href="javascript:void(0);" onclick="whitesite(); document.getElementById('contact_popover').style.display='none';"><img src="{$template_path}img/clear.gif" width="40px" height="35px" /></a>
 	  </td>
 	</tr>
 	<tr>
@@ -42,7 +42,7 @@
 		&nbsp;<span style="font-size:12px;">If other then selling price</span> &nbsp;&nbsp;
 	  </td>	
 	  <td align="left" valign="top">
-		<input type="text" name="contact_price" value="${$book.price|escape:'html'}" class="big_input" style="width:430px;"/> 				
+		<input type="text" name="contact_price" value="{$book.price|format_price}" class="big_input" style="width:430px;"/> 				
 	  </td>	
 	   <td>&nbsp;</td>		  
 	</tr>
@@ -64,7 +64,7 @@
 		
 	  </td>	
 	  <td align="right" valign="top">
-		<a href="javascript:void(0);" onclick="document.contact_form.submit();"><img src="/{$template_path}img/send.gif" /></a>
+		<a href="javascript:void(0);" onclick="document.contact_form.submit();"><img src="{$template_path}img/send.gif" /></a>
 		&nbsp;&nbsp;&nbsp;&nbsp;		
 	  </td>	
 	   <td>&nbsp;</td>		  
@@ -91,12 +91,12 @@
 			Error
 		  </td>
 		  <td align="right" valign="top">
-			<a href="javascript:void(0);" onclick="whitesite(); document.getElementById('contact_popover').style.display='none';"><img src="/{$template_path}img/clear.gif" width="40px" height="35px" /></a>
+			<a href="javascript:void(0);" onclick="whitesite(); document.getElementById('contact_popover').style.display='none';"><img src="{$template_path}img/clear.gif" width="40px" height="35px" /></a>
 		  </td>
 		</tr>
 		<tr>
 		  <td colspan="2" align="left" valign="top"><br /><br />			    
-			<br><br><br><center>Please <a href="/" class="f_reg"><b>Log In</b></a></center>
+			<br><br><br><center>Please <a href="" class="f_reg"><b>Log In</b></a></center>
 		  </td>	
 		  <td>&nbsp;</td>			  
 		</tr>		

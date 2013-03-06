@@ -35,11 +35,11 @@
 <br />
   <div style="border:1px solid #d2d2d2;width:91%;padding:15px;font-size:16px;">
     <b>Have something interesting?</b><br />
-    <form name="search_form2" method="GET" action="/search.php">
+    <form name="search_form2" method="GET" action="search.php">
     <input type="hidden" name="go">
 	<table width="100%" style="padding-top:10px;">
 	  <tr>
-		<td> <b>Post an add for a <a href="/add_wproduct.php" style="color:#1a7694;font-size:17px;">Product for sale</a></b></td>
+		<td> <b>Post an add for a <a href="add_wproduct.php" style="color:#1a7694;font-size:17px;">Product for sale</a></b></td>
 	  </tr>
 	</table>
 	</form>

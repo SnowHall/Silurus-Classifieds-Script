@@ -7,15 +7,15 @@
  * @website		http://snowhall.com/silurus
  * @email		support@snowhall.com
  * 
- * @version		1.0
- * @date		May 7, 2009
+ * @version		2.0
+ * @date		March 7, 2013
  * 
  * Silurus is a professionally developed PHP Classifieds script that was built for you.
  * Whether you are running classifieds for autos, motorcycles, bicycles, rv's, guns,
  * horses, or general merchandise, our product is the right package for you.
  * It has template system and no limit to usage with free for any changes.
  *
- * Copyright (c) 2009
+ * Copyright (c) 2009-2013
  */
  
 include("./include_php/init.php");
@@ -23,7 +23,7 @@ include("./include_php/TemplVotingView.php");
 
 $profileID = intval( $_REQUEST['ID'] );
 if($profileID==0) $profileID = $_SESSION['memberID'];
-if($profileID == 0) header("location: /");
+if($profileID == 0) header("location: index.php");
 
 if($_SERVER['REQUEST_METHOD'] == 'POST')
 {
@@ -64,10 +64,10 @@ $oVotingView = new TemplVotingView ('gvoting', 0);
 
 $order = (isset($_REQUEST['border'])?$_REQUEST['border']:'title');
 $desc = (isset($_REQUEST['bdesc'])?true:false);		
-$books = array('order'=>$order, 'desc'=>$desc, 'cur_url'=>'/my_wproducts.php?ID='.$profileID, 'prefix'=>'b', 'list'=>array());		
+$books = array('order'=>$order, 'desc'=>$desc, 'cur_url'=>'my_wproducts.php?ID='.$profileID, 'prefix'=>'b', 'list'=>array());		
 if($profileID == $_SESSION['memberID'])
 {
-	$books['show_action1'] = '/edit_wproduct.php';
+	$books['show_action1'] = 'edit_wproduct.php';
 	$books['show_action2'] = 'delete';
 }
 
@@ -105,7 +105,7 @@ while($book = mysql_fetch_assoc($rElems))
 	$temp = array();
 	$temp['Color'] = $color;
 	$temp['ID'] = $book['ID'];
-	$temp['url'] = '/wproduct.php?ID='.$book['ID'];
+	$temp['url'] = 'wproduct.php?ID='.$book['ID'];
 	$temp['Title'] = htmlspecialchars($book['Title']);
 	$temp['Date'] = date("F jS, Y",$book['date']);
 	$temp['Price'] = number_format($book['price'],2,".","");
@@ -122,7 +122,7 @@ if($profileID == $_SESSION['memberID'])
 {
 	$order = (isset($_REQUEST['dorder'])?$_REQUEST['dorder']:'title');
 	$desc = (isset($_REQUEST['ddesc'])?true:false);		
-	$books = array('order'=>$order, 'desc'=>$desc, 'cur_url'=>'/my_wproducts.php?ID='.$profileID, 'prefix'=>'d', 'list'=>array());		
+	$books = array('order'=>$order, 'desc'=>$desc, 'cur_url'=>'my_wproducts.php?ID='.$profileID, 'prefix'=>'d', 'list'=>array());		
 	if($profileID == $_SESSION['memberID'])
 	{
 		$books['show_action1'] = '';
@@ -165,7 +165,7 @@ if($profileID == $_SESSION['memberID'])
 		$temp = array();
 		$temp['Color'] = $color;
 		$temp['ID'] = $book['ID'];
-		$temp['url'] = '/wproduct.php?ID='.$book['ID'];
+		$temp['url'] = 'wproduct.php?ID='.$book['ID'];
 		$temp['Title'] = htmlspecialchars($book['Title']);
 		$temp['Date'] = date("F jS, Y",$book['date']);
 		$temp['Price'] = number_format($book['price'],2,".","");
@@ -181,9 +181,9 @@ if($profileID == $_SESSION['memberID'])
 
 	
 if($profileID == $_SESSION['memberID'])
-	addNavigation('/profile.php?ID='.$user['ID'],'My Profile');
+	addNavigation('profile.php?ID='.$user['ID'],'My Profile');
 else 
-	addNavigation('/profile.php?ID='.$user['ID'],$user['fname'].' '.$user['lname']);
+	addNavigation('profile.php?ID='.$user['ID'],$user['fname'].' '.$user['lname']);
 	
 $HEADERTEXT='Wanted Products';
 addNavigation('',$HEADERTEXT);

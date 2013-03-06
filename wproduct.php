@@ -7,15 +7,15 @@
  * @website		http://snowhall.com/silurus
  * @email		support@snowhall.com
  * 
- * @version		1.0
- * @date		May 7, 2009
+ * @version		2.0
+ * @date		March 7, 2013
  * 
  * Silurus is a professionally developed PHP Classifieds script that was built for you.
  * Whether you are running classifieds for autos, motorcycles, bicycles, rv's, guns,
  * horses, or general merchandise, our product is the right package for you.
  * It has template system and no limit to usage with free for any changes.
  *
- * Copyright (c) 2009
+ * Copyright (c) 2009-2013
  */
  
 include("./include_php/init.php");
@@ -25,11 +25,11 @@ include("./include_php/TemplVotingView.php");
 if(isset($_GET['flag']))
 {
 	mysql_query("insert into Flags set date=".time().",userID=".$_SESSION['memberID'].",type=1,itemID=".intval($_REQUEST['ID']));
-	header("location: /wproduct.php?ID=".intval($_REQUEST['ID']));
+	header("location: wproduct.php?ID=".intval($_REQUEST['ID']));
 }
 
 $book = mysql_fetch_assoc(mysql_query("select * from Store where type=1 and ID=".intval($_REQUEST['ID'])));
-if(!$book || intval($book['ID']) == 0) header("location: /profile.php");
+if(!$book || intval($book['ID']) == 0) header("location: profile.php");
 $seller = mysql_fetch_assoc(mysql_query("select * from Profiles where ID=".intval($book['userID'])));
 
 $photos = array();
@@ -88,7 +88,7 @@ include("./ap_contact.php");
 include("./ap_tell.php");
 
 $HEADERTEXT='Wanted Product';
-addNavigation('/wcategory.php','Wanted Products');
+addNavigation('wcategory.php','Wanted Products');
 addNavigation('',$book['Title']);
 $smarty->assign("site_title",  $book['Title']." :: ".$gConfig['site_title']);
 $smarty->assign("HEADERTEXT",  $HEADERTEXT);

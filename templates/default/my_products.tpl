@@ -5,25 +5,25 @@
     <td width="220px" class="menu_left" valign="top">
 	  <table width="100%" cellpadding="0" cellspacing="0"  class="menu_left_items">
 	    <tr>
-		  <td class="left_menu_out" onmouseover="this.className='left_menu_over';" onmouseout="this.className='left_menu_out';">&nbsp;&nbsp;&nbsp;&nbsp;<a href="/profile.php?ID={$user.ID}" class="left_menu">Profile</a></td>
+		  <td class="left_menu_out" onmouseover="this.className='left_menu_over';" onmouseout="this.className='left_menu_out';">&nbsp;&nbsp;&nbsp;&nbsp;<a href="profile.php?ID={$user.ID}" class="left_menu">Profile</a></td>
 		</tr>
 		{if $user.ID==$_SESSION.memberID}
 		<tr>
-		  <td class="left_menu_out" onmouseover="this.className='left_menu_over';" onmouseout="this.className='left_menu_out';">&nbsp;&nbsp;&nbsp;&nbsp;<a href="/edit_user2.php" class="left_menu">Edit Profile</a></td>
+		  <td class="left_menu_out" onmouseover="this.className='left_menu_over';" onmouseout="this.className='left_menu_out';">&nbsp;&nbsp;&nbsp;&nbsp;<a href="edit_user2.php" class="left_menu">Edit Profile</a></td>
 		</tr>
 		{/if}
 		<tr>
-		  <td class="left_menu_out" onmouseover="this.className='left_menu_over';" onmouseout="this.className='left_menu_out';">&nbsp;&nbsp;&nbsp;&nbsp;<a href="/my_products.php?ID={$user.ID}" class="left_menu">Products for Sale</a></td>
+		  <td class="left_menu_out" onmouseover="this.className='left_menu_over';" onmouseout="this.className='left_menu_out';">&nbsp;&nbsp;&nbsp;&nbsp;<a href="my_products.php?ID={$user.ID}" class="left_menu">Products for Sale</a></td>
 		</tr>
 		<tr>
-		  <td class="left_menu_out" onmouseover="this.className='left_menu_over';" onmouseout="this.className='left_menu_out';">&nbsp;&nbsp;&nbsp;&nbsp;<a href="/my_wproducts.php?ID={$user.ID}" class="left_menu">Wanted Products</a></td>
+		  <td class="left_menu_out" onmouseover="this.className='left_menu_over';" onmouseout="this.className='left_menu_out';">&nbsp;&nbsp;&nbsp;&nbsp;<a href="my_wproducts.php?ID={$user.ID}" class="left_menu">Wanted Products</a></td>
 		</tr>
 		{if $user.ID==$_SESSION.memberID}
 		<tr>
-		  <td class="left_menu_out" onmouseover="this.className='left_menu_over';" onmouseout="this.className='left_menu_out';"><img src="/{$template_path}img/add_ico.png" /> <a href="/add_product.php" class="left_menu">Post New Product for Sale</a></td>
+		  <td class="left_menu_out" onmouseover="this.className='left_menu_over';" onmouseout="this.className='left_menu_out';"><img src="{$template_path}img/add_ico.png" /> <a href="add_product.php" class="left_menu">Post New Product for Sale</a></td>
 		</tr>
 		<tr>
-		  <td class="left_menu_out" onmouseover="this.className='left_menu_over';" onmouseout="this.className='left_menu_out';"><img src="/{$template_path}img/add_ico.png" /> <a href="/add_wproduct.php" class="left_menu">Post New Wanted Product</a></td>
+		  <td class="left_menu_out" onmouseover="this.className='left_menu_over';" onmouseout="this.className='left_menu_out';"><img src="{$template_path}img/add_ico.png" /> <a href="add_wproduct.php" class="left_menu">Post New Wanted Product</a></td>
 		</tr>
 		{/if}
 	  </table>
@@ -34,7 +34,7 @@
 	  <table width="95%" cellpadding="0" cellspacing="0">
 	    <tr height="38px">
 		  <td class="book_title_td{if $active}2{/if}" id="book_list_td_active">
-		    <a href="javascript:void(0);" onclick="change_show_list('active',{$user.ID})"><img src="/{$template_path}img/arrb_{if $active}up{else}left{/if}.png" border="0" id="book_list_img_active"/></a>&nbsp;&nbsp;<span class="big_h3"><b>Active Posts  Books</b></span> you've listed that {if $user.ID==$_SESSION.memberID}you{else}{$user.fname} {$user.lname}{/if} want to buy
+		    <a href="javascript:void(0);" onclick="change_show_list('active',{$user.ID})"><img src="{$template_path}img/arrb_{if $active}up{else}left{/if}.png" border="0" id="book_list_img_active"/></a>&nbsp;&nbsp;<span class="big_h3"><b>Active Posts  Books</b></span> you've listed that {if $user.ID==$_SESSION.memberID}you{else}{$user.fname} {$user.lname}{/if} want to buy
 		  </td>		 
 		</tr>
 	  </table>
@@ -49,7 +49,7 @@
 	  <table width="95%" cellpadding="0" cellspacing="0">
 	    <tr height="38px">
 		  <td align="right">
-		    <a href="javascript:void(0);" onclick="document.delete_form.submit();"><img src="/{$template_path}img/del_books.gif" border="0" id="book_list_img_active"/></a><br /><br />
+		    <a href="javascript:void(0);" onclick="document.delete_form.submit();"><img src="{$template_path}img/del_books.gif" border="0" id="book_list_img_active"/></a><br /><br />
 		  </td>		 
 		</tr>
 	  </table>
@@ -59,7 +59,7 @@
 	  <table width="95%" cellpadding="0" cellspacing="0">
 	    <tr height="38px">
 		  <td class="book_title_td{if $deleted}2{/if}" id="book_list_td_del">
-		    <a href="javascript:void(0);" onclick="change_show_list('del',{$user.ID})"><img src="/{$template_path}img/arrb_{if $deleted}up{else}left{/if}.png" border="0" id="book_list_img_del"/></a>&nbsp;&nbsp;<span class="big_h3"><b>Expired/Deleted Posts </b></span> 
+		    <a href="javascript:void(0);" onclick="change_show_list('del',{$user.ID})"><img src="{$template_path}img/arrb_{if $deleted}up{else}left{/if}.png" border="0" id="book_list_img_del"/></a>&nbsp;&nbsp;<span class="big_h3"><b>Expired/Deleted Posts </b></span> 
 		  </td>		 
 		</tr>
 	  </table>

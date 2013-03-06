@@ -7,15 +7,15 @@
  * @website		http://snowhall.com/silurus
  * @email		support@snowhall.com
  * 
- * @version		1.0
- * @date		May 7, 2009
+ * @version		2.0
+ * @date		March 7, 2013
  * 
  * Silurus is a professionally developed PHP Classifieds script that was built for you.
  * Whether you are running classifieds for autos, motorcycles, bicycles, rv's, guns,
  * horses, or general merchandise, our product is the right package for you.
  * It has template system and no limit to usage with free for any changes.
  *
- * Copyright (c) 2009
+ * Copyright (c) 2009-2013
  */
 
 include("../include_php/admin_init.php");
@@ -30,7 +30,7 @@ if($action=='del')
 {
 	mysql_query("delete from Menu where ID=".intval($_REQUEST['ID']));
 	mysql_query("update Menu set Parent=0 where Parent=".intval($_REQUEST['ID']));
-	header("location: /admin/menu.php");
+	header("location: {$gConfig['site_url']}admin/menu.php");
 	die();	
 }
 
@@ -69,16 +69,16 @@ function getList(  )
 {
 	global $gConfig;
 	
-	$ret = '<a href="/admin/menu.php?action=add">Add New Item</a><br><br><table width=100%>';
+	$ret = '<a href="' . $gConfig['site_url'] . 'admin/menu.php?action=add">Add New Item</a><br><br><table width=100%>';
 	$q = mysql_query("select * from Menu where Parent=0 order by Prior");
 	while($a = mysql_fetch_assoc($q))
 	{
-		$ret.='<tr><td><a href="/admin/menu.php?action=edit&ID='.$a['ID'].'">'.$a['Title'].'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/admin/menu.php?action=del&ID='.$a['ID'].'" style="color:red">Delete</a></td></tr>';
+		$ret.='<tr><td><a href="admin/menu.php?action=edit&ID='.$a['ID'].'">'.$a['Title'].'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="admin/menu.php?action=del&ID='.$a['ID'].'" style="color:red">Delete</a></td></tr>';
 		$qq = mysql_query("select * from Menu where Parent=".$a['ID']." order by Prior");
 		if(mysql_numrows($qq)>0)
 		{
 			while($aa = mysql_fetch_assoc($qq))
-				$ret.='<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/admin/menu.php?action=edit&ID='.$aa['ID'].'">'.$aa['Title'].'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/admin/menu.php?action=del&ID='.$aa['ID'].'" style="color:red">Delete</a></td></tr>';
+				$ret.='<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="admin/menu.php?action=edit&ID='.$aa['ID'].'">'.$aa['Title'].'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="admin/menu.php?action=del&ID='.$aa['ID'].'" style="color:red">Delete</a></td></tr>';
 		}
 		
 	}
@@ -99,7 +99,7 @@ function getEdit()
 		{
 			mysql_query("update Menu set Title='".mysql_escape_string($_REQUEST['Title'])."',Url='".mysql_escape_string($_REQUEST['Url'])."',Login='".intval($_REQUEST['Login'])."',Parent='".intval($_REQUEST['Parent'])."',Photo='".mysql_escape_string($_REQUEST['Photo'])."',Prior='".intval($_REQUEST['Prior'])."' where ID=".intval($_REQUEST['ID']));
 			if(intval($_REQUEST['Parent'])>0) mysql_query("update Menu set Parent=0 where Parent=".intval($_REQUEST['ID']));
-			header("location: /admin/menu.php");
+			header("location: {$gConfig['site_url']}admin/menu.php");
 			die();
 		}
 	}
@@ -143,7 +143,7 @@ function getEdit()
 		}
 		else
 		{
-			photo_saved_img_obj.src="/templates/'.$gConfig['site_templates'].'/img/icons/"+obj.value;
+			photo_saved_img_obj.src="templates/'.$gConfig['site_templates'].'/img/icons/"+obj.value;
 			photo_saved_div_obj.style.display="block";					
 		}
 	}
@@ -165,7 +165,7 @@ function getEdit()
 	    closedir($dh);
 	}
 	$ret .= '</select>
-	<div style="'.(trim($_REQUEST['Photo'])==''?'display:none':'').'" id="photo_saved_div"><img src="/templates/'.$gConfig['site_templates'].'/img/icons/'.$_REQUEST['Photo'].'" id="photo_saved_img" /></div><Br><br>
+	<div style="'.(trim($_REQUEST['Photo'])==''?'display:none':'').'" id="photo_saved_div"><img src="templates/'.$gConfig['site_templates'].'/img/icons/'.$_REQUEST['Photo'].'" id="photo_saved_img" /></div><Br><br>
 	
 	<input type=submit value="Save">
 	</form>	
@@ -186,7 +186,7 @@ function getAdd()
 		if($err=='')
 		{
 			mysql_query("insert into Menu set Title='".mysql_escape_string($_REQUEST['Title'])."',Url='".mysql_escape_string($_REQUEST['Url'])."',Login='".intval($_REQUEST['Login'])."',Parent='".intval($_REQUEST['Parent'])."',Photo='".mysql_escape_string($_REQUEST['Photo'])."',Prior='".intval($_REQUEST['Prior'])."'");
-			header("location: /admin/menu.php");
+			header("location: {$gConfig['site_url']}admin/menu.php");
 			die();
 		}
 	}
@@ -232,7 +232,7 @@ function getAdd()
 		}
 		else
 		{
-			photo_saved_img_obj.src="/templates/'.$gConfig['site_templates'].'/img/icons/"+obj.value;
+			photo_saved_img_obj.src="templates/'.$gConfig['site_templates'].'/img/icons/"+obj.value;
 			photo_saved_div_obj.style.display="block";					
 		}
 	}
@@ -254,7 +254,7 @@ function getAdd()
 	    closedir($dh);
 	}
 	$ret .= '</select>
-	<div style="'.(trim($_REQUEST['Photo'])==''?'display:none':'').'" id="photo_saved_div"><img src="/templates/'.$gConfig['site_templates'].'/img/icons/'.$_REQUEST['Photo'].'" id="photo_saved_img" /></div><Br><br>
+	<div style="'.(trim($_REQUEST['Photo'])==''?'display:none':'').'" id="photo_saved_div"><img src="templates/'.$gConfig['site_templates'].'/img/icons/'.$_REQUEST['Photo'].'" id="photo_saved_img" /></div><Br><br>
 	
 	<input type=submit value="Save">
 	</form>	

@@ -7,20 +7,20 @@
  * @website		http://snowhall.com/silurus
  * @email		support@snowhall.com
  * 
- * @version		1.0
- * @date		May 7, 2009
+ * @version		2.0
+ * @date		March 7, 2013
  * 
  * Silurus is a professionally developed PHP Classifieds script that was built for you.
  * Whether you are running classifieds for autos, motorcycles, bicycles, rv's, guns,
  * horses, or general merchandise, our product is the right package for you.
  * It has template system and no limit to usage with free for any changes.
  *
- * Copyright (c) 2009
+ * Copyright (c) 2009-2013
  */
 
 include("./include_php/init.php");
 
-if($_SESSION['memberID'] == 0) header("location: /");
+if($_SESSION['memberID'] == 0) header("location: index.php");
 	
 if($_SERVER['REQUEST_METHOD'] == 'POST')
 {
@@ -28,16 +28,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 	$add_on = '';
 	if($_POST['Email'] != $_POST['Email2']) 
 		$err['Email2'] = 1;	
-	if(trim($_POST['fname']) == '') 
+	/*if(trim($_POST['fname']) == '') 
 		$err['fname'] = 1;
 	if(trim($_POST['lname']) == '') 
 		$err['lname'] = 1;
 	if(trim($_POST['city']) == '') 
-		$err['city'] = 1;
+		$err['city'] = 1;*/
 	if(trim($_POST['Email']) == '') 
 		$err['Email'] = 1;	
-	if(trim($_POST['zip']) == '') 
-		$err['Zip'] = 1;	
+	/*if(trim($_POST['zip']) == '') 
+		$err['Zip'] = 1;	*/
 	if($_POST['Password1'] != '' && $_POST['Password1'] != $_POST['Password2']) 
 		$err['Password2'] = 1;	
 	$us = mysql_numrows(mysql_query("select * from Profiles where ID<>".$_SESSION['memberID']." and Email='".mysql_escape_string($_POST['Email'])."'"));
@@ -125,7 +125,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 				where ID=".$_SESSION['memberID']);
 				
 		$_SESSION['memberINFO'] = mysql_fetch_assoc(mysql_query("select * from Profiles where ID=".$_SESSION['memberID']));
-		header("location: /profile.php"); die();
+		header("location: profile.php"); die();
 	}
 	
 	$smarty->assign("error",  $err);
@@ -139,7 +139,7 @@ else
 	$_REQUEST['city'] = $city['Title'];
 }
 
-addNavigation('/profile.php','My Profile');
+addNavigation('profile.php','My Profile');
 addNavigation('','Edit My Account Information');
 $smarty->assign("site_title",  'Edit My Account Information'." :: ".$gConfig['site_title']);
 $smarty->assign("HEADERTEXT",  'Edit My Account Information');

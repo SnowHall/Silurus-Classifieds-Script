@@ -11,13 +11,14 @@ body
 
 div#FloatDesc
 {
-	position:absolute;
+	/*position:absolute;
 	display:none;
 	z-index:100;
 	background-color:#ffffe0;
 	border:1px solid #000000;
 	padding:3px;
-	width:120px;
+	width:120px;*/
+    height: 64px;
 }
 
 div#commentNavigation
@@ -279,13 +280,13 @@ a img
 	font-size:16px;
 	font-weight:bold;
 	color:#ffffff;
-	
+
 	width:231px;
 	padding-left:14px;
 	border:1px solid #054575;
 	height:24px;
 	padding-top:6px;
-	
+
 	z-index:5;
 }
 
@@ -423,7 +424,7 @@ img.menu_item_icon
 .bottom_cont
 {
 	width:1000px;
-	height:65px;		
+	height:65px;
 	background-repeat:repeat-x;
 	background-image:url(images/bot_head_bg2.gif);
 	font-size:14px;
@@ -446,6 +447,7 @@ img.menu_item_icon
 	margin:auto;
 	background-image:url(images/admin_page.jpg);
 	background-repeat:no-repeat;
+  margin-top: -150px;
 }
 
 .login_form
@@ -572,7 +574,7 @@ img.menu_item_icon
 {
  	position: relative;
  	float:left;
- 	padding: 0px 3px; 
+ 	padding: 0px 3px;
  	margin:0px 1px 0px 1px;
  	background-color: #66CC66;
  }
@@ -580,12 +582,12 @@ img.menu_item_icon
 {
  	position: relative;
  	float:left;
- 	padding: 0px 3px; 
+ 	padding: 0px 3px;
  	margin:0px 1px 0px 1px;
  	background-color: #FF6666;
  }
-  
-  
+
+
 
 div#artBlock
 {
@@ -697,7 +699,7 @@ div.categoryHeader
 	position:relative;
 	padding:5px;
 	margin-bottom:10px;
-	
+
 }
 div.categoryHeader div.artCaption
 {
@@ -785,4 +787,43 @@ div.SDMatchBox
 	border: 1px solid silver;
 	padding: 2px 2px 2px 20px;
 	background-color: #F7F7F7;
+}
+#header-bar {
+    color: white;
+    padding: 5px;
+    position: fixed;
+    width: 100%;
+    height: 53px;
+    background-color: black;
+    border-bottom: 1px solid #191919;
+    z-index: 100;
+    line-height: 53px;
+    margin-bottom: 1px;
+}
+#header-bar div.close-header {
+    width: 40px;
+    margin-left: 5px;
+    height: 52px;
+    float: left;
+}
+#header-bar p.meta-data {
+    padding: 0px;
+    margin: 0px;
+    float: left;
+}
+#header-bar div.close-header a#close-button {
+    display: block;
+    width: 16px;
+    height: 16px;
+    margin: 0px auto;
+    margin-top: 17px;
+    border: 1px solid #545454;
+    text-indent: -9999px;
+    background-image: url('images/close_button.gif');
+    background-repeat: no-repeat;
+}
+#header-bar p.meta-data a {
+    font-size: 14px;
+    color: #ffffff;
+    text-decoration: none;
 }

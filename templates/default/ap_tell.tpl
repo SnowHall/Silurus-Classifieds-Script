@@ -10,7 +10,7 @@
 		Email A Friend
 	  </td>
 	  <td align="right" valign="top">
-		<a href="javascript:void(0);" onclick="whitesite(); document.getElementById('tellafriends_popover').style.display='none';"><img src="/{$template_path}img/clear.gif" width="40px" height="35px" /></a>
+		<a href="javascript:void(0);" onclick="whitesite(); document.getElementById('tellafriends_popover').style.display='none';"><img src="{$template_path}img/clear.gif" width="40px" height="35px" /></a>
 	  </td>
 	</tr>
 	<tr>
@@ -56,7 +56,7 @@ I would like show you this product <a href="{$site_url}{if $ap_contact_type==1}p
 		
 	  </td>	
 	  <td align="right" valign="top">
-		<a href="javascript:void(0);" onclick="document.tellafriends_form.submit();"><img src="/{$template_path}img/tellafriends_butt.gif" /></a>
+		<a href="javascript:void(0);" onclick="document.tellafriends_form.submit();"><img src="{$template_path}img/tellafriends_butt.gif" /></a>
 		&nbsp;&nbsp;&nbsp;&nbsp;		
 	  </td>	
 	   <td>&nbsp;</td>		  

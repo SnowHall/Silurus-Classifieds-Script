@@ -7,15 +7,15 @@
  * @website		http://snowhall.com/silurus
  * @email		support@snowhall.com
  * 
- * @version		1.0
- * @date		May 7, 2009
+ * @version		2.0
+ * @date		March 7, 2013
  * 
  * Silurus is a professionally developed PHP Classifieds script that was built for you.
  * Whether you are running classifieds for autos, motorcycles, bicycles, rv's, guns,
  * horses, or general merchandise, our product is the right package for you.
  * It has template system and no limit to usage with free for any changes.
  *
- * Copyright (c) 2009
+ * Copyright (c) 2009-2013
  */
 
 include("../include_php/admin_init.php");
@@ -34,13 +34,15 @@ if(isset($_REQUEST['add']) && intval($_REQUEST['id'])>0)
 		print '<script>opener.window.location.reload();window.close();</script>'; die();
 	}
 
+	global $gConfig;
+	
 	$ret = '
 	<form method="POST">
 	<b>Title</b><br><input type=text name=title><br><br>
 	<b>URL</b><br><input type=text name=url><br><br>
 	<b>Text</b><br>';
 	include("../fckeditor/fckeditor.php") ;
-	$sBasePath = '/fckeditor/' ;						
+	$sBasePath = $gConfig['site_url'] . '/fckeditor/' ;						
 	$oFCKeditor = new FCKeditor('text') ;
 	$oFCKeditor->BasePath	= $sBasePath ;
 	$oFCKeditor->Height	= '300px' ;

@@ -1,8 +1,8 @@
+AddDefaultCharset UTF-8
+Options -MultiViews
 RewriteEngine On
 
-# RewriteRule ^profile\.php rewrite_name.php [L]
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule .+ - [L]
 RewriteRule [A-Za-z0-9_-]+ rewrite_name.php [L]
-

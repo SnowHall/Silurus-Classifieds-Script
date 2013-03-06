@@ -1,28 +1,28 @@
 <?php
 /**
  * Silurus Classifieds Builder
- * 
- * 
+ *
+ *
  * @author		SnowHall - http://snowhall.com
  * @website		http://snowhall.com/silurus
  * @email		support@snowhall.com
- * 
- * @version		1.0
- * @date		May 7, 2009
- * 
+ *
+ * @version		2.0
+ * @date		March 7, 2013
+ *
  * Silurus is a professionally developed PHP Classifieds script that was built for you.
  * Whether you are running classifieds for autos, motorcycles, bicycles, rv's, guns,
  * horses, or general merchandise, our product is the right package for you.
  * It has template system and no limit to usage with free for any changes.
  *
- * Copyright (c) 2009
+ * Copyright (c) 2009-2013
  */
 
 include("./include_php/init.php");
 include("./include_php/TemplVotingView.php");
 
-if($_SESSION['memberID'] == 0) header("location: /");
-	
+//if($_SESSION['memberID'] == 0) header("location: index.php");
+
 if($_SERVER['REQUEST_METHOD'] == 'POST')
 {
 	$err = array();
@@ -37,7 +37,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 	}
 	if(floatval(str_replace(",",".",$_REQUEST['price'])) <= 0) {$err['fieldError'] = 1;$_REQUEST['price']='';}
 	if(trim($_REQUEST['Title']) == '') {$err['fieldError'] = 1;}
-		
+
 	$q = mysql_query("select * from StoreProp where Required=1 and Type<>3 and categoryID=".intval($_REQUEST['categoryID']));
 	while($prop = mysql_fetch_assoc($q))
 	{
@@ -47,10 +47,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 		(intval($_REQUEST['prop'.$prop['ID']])==0 && $prop['Type']==5) ||
 		((!is_array($_REQUEST['prop'.$prop['ID']])||empty($_REQUEST['prop'.$prop['ID']])) && $prop['Type']==6) ||
 		((!is_array($_REQUEST['prop'.$prop['ID']])||empty($_REQUEST['prop'.$prop['ID']])) && $prop['Type']==7)
-		)) 
+		))
 			$err["fieldError"] = 1;
 	}
-	
+
 	$q = mysql_query("select * from StoreProp where Required=1 and Type=3 and categoryID=".intval($_REQUEST['categoryID']));
 	while($prop = mysql_fetch_assoc($q))
 	{
@@ -68,38 +68,40 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 						case 'image/gif':  $ext = 'gif'; break;
 						case 'image/png':  $ext = 'png'; break;
 					}
-					
+
 					if( !$ext )
 						$err['photo'.$prop['ID']] = 'Incorrect file type';
 				}
-				else 
+				else
 					$err['photo'.$prop['ID']] = 'Incorrect file type';
 			}
-		}			
+		}
 	}
-	
+
 	if(empty($err))
 	{
-		mysql_query("insert into Store SET 	
+        $userID = !empty($_SESSION['memberID']) ? intval($_SESSION['memberID']) : 0;
+		mysql_query("insert into Store SET
 				LastModified=".time().",
 				type=0,
-		  		userID=".$_SESSION['memberID'].",	
+		  		userID=".$userID.",
 				Title='".mysql_escape_string($_REQUEST['Title'])."',
-				date=".time().",				
-				categoryID=".intval($_REQUEST['categoryID']).",				
-				price='".floatval(str_replace(",",".",$_REQUEST['price']))."'");		
+				date=".time().",
+				categoryID=".intval($_REQUEST['categoryID']).",
+				price='".floatval(str_replace(",",".",$_REQUEST['price']))."',
+                password='".md5($_REQUEST['password'])."'");
 		$newID = mysql_insert_id();
 		$q = mysql_query("select * from StoreProp where categoryID=".intval($_REQUEST['categoryID']));
 		while($prop = mysql_fetch_assoc($q))
 		{
 			if($prop['Type']<3 || $prop['Type']==4 || $prop['Type']==5) mysql_query("insert into StorePropValues set PropID=".$prop['ID'].",itemID=".$newID.",Value='".$_REQUEST['prop'.$prop['ID']]."'");
-			if($prop['Type']>5) 
+			if($prop['Type']>5)
 			{
 				if(is_array($_REQUEST['prop'.$prop['ID']]))
-					foreach ($_REQUEST['prop'.$prop['ID']] as $val) 
-						mysql_query("insert into StorePropValues set PropID=".$prop['ID'].",itemID=".$newID.",Value='".$val."'");			
+					foreach ($_REQUEST['prop'.$prop['ID']] as $val)
+						mysql_query("insert into StorePropValues set PropID=".$prop['ID'].",itemID=".$newID.",Value='".$val."'");
 			}
-			
+
 			if($prop['Type']==3 && $_FILES['prop'.$prop['ID']] && !empty( $_FILES['prop'.$prop['ID']] ) )
 			{
 				if( $_FILES['prop'.$prop['ID']]['error'] == 0 )
@@ -113,15 +115,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 							case 'image/jpeg': $ext = 'jpg'; break;
 							case 'image/gif':  $ext = 'gif'; break;
 							case 'image/png':  $ext = 'png'; break;
-						}						
+						}
 						if( $ext )
 						{
-							$newFileName = 'P'.time().$_SESSION['memberID'].$prop['ID'].'.'.$ext;		
+							$newFileName = 'P'.time().$_SESSION['memberID'].$prop['ID'].'.'.$ext;
 							if( move_uploaded_file( $_FILES['prop'.$prop['ID']]['tmp_name'], './media/store/'.$newFileName ) )
 							{
 								if($aFileInfo[0] > 300)
 									@imageResize( './media/store/'.$newFileName, './media/store/small_'.$newFileName,300);
-								else 
+								else
 									@imageResize( './media/store/'.$newFileName, './media/store/small_'.$newFileName,$aFileInfo[0]);
 								mysql_query("insert into StorePropValues set PropID=".$prop['ID'].",itemID=".$newID.",Value='".$newFileName."'");
 							}
@@ -130,7 +132,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 				}
 			}
 		}
-		header("location: /product.php?ID=".$newID); die();
+		header("location: product.php?ID=".$newID); die();
 	}
 	$smarty->assign("error",  $err);
 }
@@ -168,7 +170,7 @@ while($prop = mysql_fetch_assoc($q))
 	if($prop['Type'] != 3) $prop['entered'] = $_REQUEST['prop'.$prop['ID']];
 	$prop['error'] = $err['photo'.$prop['ID']];
 	if($prop['Required'])
-	{		
+	{
 		if($_SERVER['REQUEST_METHOD']=='POST' && (
 		(trim($_REQUEST['prop'.$prop['ID']])=='' && $prop['Type']==1) ||
 		(trim($_REQUEST['prop'.$prop['ID']])=='' && $prop['Type']==2) ||
@@ -176,18 +178,18 @@ while($prop = mysql_fetch_assoc($q))
 		(intval($_REQUEST['prop'.$prop['ID']])==0 && $prop['Type']==5) ||
 		((!is_array($_REQUEST['prop'.$prop['ID']])||empty($_REQUEST['prop'.$prop['ID']])) && $prop['Type']==6) ||
 		((!is_array($_REQUEST['prop'.$prop['ID']])||empty($_REQUEST['prop'.$prop['ID']])) && $prop['Type']==7)
-		)) 
+		))
 			$prop['color'] = 'background:#ff0000;';
 		$req_props[] = $prop;
 	}
-	else 
+	else
 		$props[] = $prop;
 }
 $smarty->assign("req_props",  $req_props);
 $smarty->assign("props",  $props);
 
 $HEADERTEXT='Add Product for Sale';
-addNavigation('/profile.php?ID='.$_SESSION['memberID'],'My Profile');
+addNavigation('profile.php?ID='.$_SESSION['memberID'],'My Profile');
 addNavigation('',$HEADERTEXT);
 $smarty->assign("site_title",  $HEADERTEXT." :: ".$gConfig['site_title']);
 $smarty->assign("HEADERTEXT",  $HEADERTEXT);

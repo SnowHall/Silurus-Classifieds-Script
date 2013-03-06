@@ -1,21 +1,21 @@
 <?php
 /**
  * Silurus Classifieds Builder
- * 
- * 
+ *
+ *
  * @author		SnowHall - http://snowhall.com
  * @website		http://snowhall.com/silurus
  * @email		support@snowhall.com
- * 
- * @version		1.0
- * @date		May 7, 2009
- * 
+ *
+ * @version		2.0
+ * @date		March 7, 2013
+ *
  * Silurus is a professionally developed PHP Classifieds script that was built for you.
  * Whether you are running classifieds for autos, motorcycles, bicycles, rv's, guns,
  * horses, or general merchandise, our product is the right package for you.
  * It has template system and no limit to usage with free for any changes.
  *
- * Copyright (c) 2009
+ * Copyright (c) 2009-2013
  */
 
 include("../include_php/admin_init.php");
@@ -26,26 +26,26 @@ $smarty->assign("page_header_text",  "Manage Book Categories");
 
 
 if(isset($_POST['editID']))
-{	
-	$Photo = '';		
-	mysql_query("update BookCategories set Title='".mysql_escape_string($_POST['Title'])."',Related='".mysql_escape_string(serialize($_POST['Related']))."' where ID=".intval($_POST['editID']));	
-	header("location: /admin/category.php");
+{
+	$Photo = '';
+	mysql_query("update BookCategories set Title='".mysql_escape_string($_POST['Title'])."',Related='".mysql_escape_string(serialize($_POST['Related']))."' where ID=".intval($_POST['editID']));
+	header("location: {$gConfig['site_url']}admin/category.php");
 }
 
 if(isset($_POST['goadd']) && trim($_POST['Title'])!='')
 {
 	mysql_query("insert into BookCategories set Title='".mysql_escape_string($_POST['Title'])."',Related='".mysql_escape_string(serialize($_POST['Related']))."'");
-	header("location: /admin/category.php");
+	header("location: {$gConfig['site_url']}admin/category.php");
 }
 
 if(isset($_GET['del']) && intval($_GET['ID']) > 0)
 {
 	mysql_query("delete from BookCategories  where ID=".intval($_GET['ID']));
-	header("location: /admin/category.php");
+	header("location: {$gConfig['site_url']}admin/category.php");
 }
 $action = $_GET['action'];
- 
-	
+
+
 $smarty->assign("page_content",  getArticlesAdminContent());
 $smarty->display('index.tpl');
 
@@ -62,10 +62,10 @@ function getArticlesAdminContent()
 				$ID = (int)$_REQUEST['ID'];
 				$ret .= getEdit($ID);
 			break;
-			case 'add':				
+			case 'add':
 				$ret .= getAdd();
 			break;
-						
+
 			default:
 				$ret .= getList();
 			break;
@@ -76,10 +76,10 @@ function getArticlesAdminContent()
 
 function getList( $iArticleID = '' )
 {
-	global $site;
-	
-	$ret = '<a href="/admin/category.php?action=add">Add category</a><br><br>
-	<table width=100%>';	
+	global $site, $gConfig;
+
+	$ret = '<a href="' . $gConfig['site_url'] . 'admin/category.php?action=add">Add category</a><br><br>
+	<table width=100%>';
 	$q = mysql_query("select * from BookCategories where ID>0 order by Title");
 	$ret.='<tr><td valign=top><b>Title</b></td>
 		<td valign=top><b>Count books for sale</b></td>
@@ -92,7 +92,7 @@ function getList( $iArticleID = '' )
 		$ret.='<tr><td valign=top><b>'.$a['Title'].'</b></td>
 		<td valign=top><b>'.intval($num1).'</b></td>
 		<td valign=top><b>'.intval($num2).'</b></td>
-		<td valign=top><a href="/admin/category.php?action=edit&ID='.$a['ID'].'">Edit</a> &nbsp;&nbsp;&nbsp;<a href="javascript:if(confirm(\'Delete category?\')) window.location=\'/admin/category.php?del&ID='.$a['ID'].'\';">Delete</a></td></tr>';
+		<td valign=top><a href="' . $gConfig['site_url'] . 'admin/category.php?action=edit&ID='.$a['ID'].'">Edit</a> &nbsp;&nbsp;&nbsp;<a href="javascript:if(confirm(\'Delete category?\')) top.window.location=\''.$gConfig['site_url'].'admin/category.php?del&ID='.$a['ID'].(isset($_GET['demo'])?'&demo=1':'').'\';">Delete</a></td></tr>';
 	}
 	$ret.='</table>';
 	return  $ret;
@@ -101,7 +101,7 @@ function getList( $iArticleID = '' )
 function getEdit( $iArticleID = '' )
 {
 	global $site;
-		
+
 	$articleQuery = "
 
 		SELECT * from BookCategories WHERE `ID` = '$iArticleID';
@@ -109,7 +109,7 @@ function getEdit( $iArticleID = '' )
 	$aArticle = mysql_fetch_assoc(mysql_query( $articleQuery ));
 	$Related = unserialize($aArticle['Related']);
 	if(!is_array($Related)) $Related = array();
-	
+
 	$ret = '';
 	$ret .= '<div class="navigationLinks">' . "\n";
 		$ret .= '<span>' . "\n";
@@ -117,7 +117,7 @@ function getEdit( $iArticleID = '' )
 				$ret .= 'All categories' . "\n";
 			$ret .= '</a>' . "\n";
 		$ret .= '</span>' . "\n";
-		
+
 
 	$ret .= '</div>' . "\n";
 
@@ -131,8 +131,8 @@ function getEdit( $iArticleID = '' )
 			$ret .= '</div>' . "\n";
 			$ret .= '<div>' . "\n";
 				$ret .= '<input type="text" name="Title" id="Name" class="catCaption" value="' . htmlspecialchars( $aArticle['Title'] ) . '" />' . "\n";
-			$ret .= '</div>' . "\n";	
-			
+			$ret .= '</div>' . "\n";
+
 			$ret .= '<div>' . "\n";
 				$ret .= '<b>Related Categories</b>' . "\n";
 			$ret .= '</div>' . "\n";
@@ -144,10 +144,10 @@ function getEdit( $iArticleID = '' )
 				$ret .= '
 				<input type="checkbox" name="Related[]" value="'.$arr['ID'].'" '.(in_array($arr['ID'],$Related)?'checked':'').'> '.$arr['Title'].' <bR>
 				';
-			}	
-			$ret .= '</div>' . "\n";		
-												
-			$ret .= '<input type="hidden" name="editID" value="'.$aArticle['ID'].'" />' . "\n";		
+			}
+			$ret .= '</div>' . "\n";
+
+			$ret .= '<input type="hidden" name="editID" value="'.$aArticle['ID'].'" />' . "\n";
 			$ret .= '';
 			$ret .= '<input type=submit name=go value="Save">' . "\n";
 
@@ -160,8 +160,8 @@ function getEdit( $iArticleID = '' )
 function getAdd( )
 {
 	global $site;
-		
-	
+
+
 	$ret = '';
 	$ret .= '<div class="navigationLinks">' . "\n";
 		$ret .= '<span>' . "\n";
@@ -179,8 +179,8 @@ function getAdd( )
 			$ret .= '</div>' . "\n";
 			$ret .= '<div>' . "\n";
 				$ret .= '<input type="text" name="Title" id="Name" class="catCaption" value="' . htmlspecialchars( $aArticle['Title'] ) . '" />' . "\n";
-			$ret .= '</div>' . "\n";			
-					
+			$ret .= '</div>' . "\n";
+
 			$ret .= '<div>' . "\n";
 				$ret .= '<b>Related Categories</b>' . "\n";
 			$ret .= '</div>' . "\n";
@@ -191,9 +191,9 @@ function getAdd( )
 				$ret .= '
 				<input type="checkbox" name="Related[]" value="'.$arr['ID'].'"> '.$arr['Title'].' <bR>
 				';
-			}	
+			}
 			$ret .= '</div>' . "\n";
-				
+
 			$ret .= '<input type=submit name=goadd value="Add">' . "\n";
 
 		$ret .= '</form>' . "\n";

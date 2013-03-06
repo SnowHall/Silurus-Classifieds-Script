@@ -7,15 +7,15 @@
  * @website		http://snowhall.com/silurus
  * @email		support@snowhall.com
  * 
- * @version		1.0
- * @date		May 7, 2009
+ * @version		2.0
+ * @date		March 7, 2013
  * 
  * Silurus is a professionally developed PHP Classifieds script that was built for you.
  * Whether you are running classifieds for autos, motorcycles, bicycles, rv's, guns,
  * horses, or general merchandise, our product is the right package for you.
  * It has template system and no limit to usage with free for any changes.
  *
- * Copyright (c) 2009
+ * Copyright (c) 2009-2013
  */
 
 include("../include_php/admin_init.php");
@@ -26,55 +26,55 @@ ob_start();
 
 print '<table width=70%><tr><td>
 <b>Clicks and shows on banners: </b></td><td>(
-<a href="/admin/stat_banners.php?action=days&period=day">Day</a>, 
-<a href="/admin/stat_banners.php?action=days&period=week">Week</a>, 
-<a href="/admin/stat_banners.php?action=days&period=month">Month</a>)<br>
+<a href="admin/stat_banners.php?action=days&period=day">Day</a>, 
+<a href="admin/stat_banners.php?action=days&period=week">Week</a>, 
+<a href="admin/stat_banners.php?action=days&period=month">Month</a>)<br>
 </td></tr><tr><td>
 <b>Clicks and shows on banners in page:</b></td><td>(
-<a href="/admin/stat_banners.php?action=bpages&period=day">Day</a>, 
-<a href="/admin/stat_banners.php?action=bpages&period=week">Week</a>, 
-<a href="/admin/stat_banners.php?action=bpages&period=month">Month</a>)<br>
+<a href="admin/stat_banners.php?action=bpages&period=day">Day</a>, 
+<a href="admin/stat_banners.php?action=bpages&period=week">Week</a>, 
+<a href="admin/stat_banners.php?action=bpages&period=month">Month</a>)<br>
 </td></tr><tr><td>
 <b>Clicks and shows in page:</b></td><td>(
-<a href="/admin/stat_banners.php?action=pages&period=day">Day</b></a>, 
-<a href="/admin/stat_banners.php?action=pages&period=week">Week</a>, 
-<a href="/admin/stat_banners.php?action=pages&period=month">Month</a>)
+<a href="admin/stat_banners.php?action=pages&period=day">Day</b></a>, 
+<a href="admin/stat_banners.php?action=pages&period=week">Week</a>, 
+<a href="admin/stat_banners.php?action=pages&period=month">Month</a>)
 </td></tr></table><hr>
 
 
 <table width=70%><tr><td>
 <b>Clicks by Country on banners:</b></td><td>(
-<a href="/admin/stat_banners.php?action=country&period=day">Day</a>, 
-<a href="/admin/stat_banners.php?action=country&period=week">Week</a>, 
-<a href="/admin/stat_banners.php?action=country&period=month">Month</a>)<br>
+<a href="admin/stat_banners.php?action=country&period=day">Day</a>, 
+<a href="admin/stat_banners.php?action=country&period=week">Week</a>, 
+<a href="admin/stat_banners.php?action=country&period=month">Month</a>)<br>
 </td></tr><tr><td>
 <b> Clicks by State(USA) on banners:</b></td><td>(
-<a href="/admin/stat_banners.php?action=state&period=day">Day</a>, 
-<a href="/admin/stat_banners.php?action=state&period=week">Week</a>, 
-<a href="/admin/stat_banners.php?action=state&period=month">Month</a>)<br>
+<a href="admin/stat_banners.php?action=state&period=day">Day</a>, 
+<a href="admin/stat_banners.php?action=state&period=week">Week</a>, 
+<a href="admin/stat_banners.php?action=state&period=month">Month</a>)<br>
 </td></tr><tr><td>
 <b>Clicks by City on banners:</b></td><td>(
-<a href="/admin/stat_banners.php?action=city&period=day">Day</a>, 
-<a href="/admin/stat_banners.php?action=city&period=week">Week</a>, 
-<a href="/admin/stat_banners.php?action=city&period=month">Month</a>)
+<a href="admin/stat_banners.php?action=city&period=day">Day</a>, 
+<a href="admin/stat_banners.php?action=city&period=week">Week</a>, 
+<a href="admin/stat_banners.php?action=city&period=month">Month</a>)
 </td></tr></table><hr>
 
 
 <table width=70%><tr><td>
 <b>Total clicks by Country:</b></td><td>(
-<a href="/admin/stat_banners.php?action=tcountry&period=day">Day</a>, 
-<a href="/admin/stat_banners.php?action=tcountry&period=week">Week</a>, 
-<a href="/admin/stat_banners.php?action=tcountry&period=month">Month</a>)<br>
+<a href="admin/stat_banners.php?action=tcountry&period=day">Day</a>, 
+<a href="admin/stat_banners.php?action=tcountry&period=week">Week</a>, 
+<a href="admin/stat_banners.php?action=tcountry&period=month">Month</a>)<br>
 </td></tr><tr><td>
 <b>Total clicks by State(USA):</b></td><td>(
-<a href="/admin/stat_banners.php?action=tstate&period=day">Day</a>, 
-<a href="/admin/stat_banners.php?action=tstate&period=week">Week</a>, 
-<a href="/admin/stat_banners.php?action=tstate&period=month">Month</a>)<br>
+<a href="admin/stat_banners.php?action=tstate&period=day">Day</a>, 
+<a href="admin/stat_banners.php?action=tstate&period=week">Week</a>, 
+<a href="admin/stat_banners.php?action=tstate&period=month">Month</a>)<br>
 </td></tr><tr><td>
 <b>Total clicks by City:</b></td><td>(
-<a href="/admin/stat_banners.php?action=tcity&period=day">Day</a>, 
-<a href="/admin/stat_banners.php?action=tcity&period=week">Week</a>, 
-<a href="/admin/stat_banners.php?action=tcity&period=month">Month</a>)
+<a href="admin/stat_banners.php?action=tcity&period=day">Day</a>, 
+<a href="admin/stat_banners.php?action=tcity&period=week">Week</a>, 
+<a href="admin/stat_banners.php?action=tcity&period=month">Month</a>)
 </td></tr></table>
 <hr>
 <br>';
@@ -136,10 +136,10 @@ function tcity()
 			$y = date("Y");
 		}
 		
-		print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=tcity&date='.date("Y-m",mktime(5,5,5,$m-1,5,$y)).'">'.date("Y-m",mktime(5,5,5,$m-1,5,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+		print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=tcity&date='.date("Y-m",mktime(5,5,5,$m-1,5,$y)).'">'.date("Y-m",mktime(5,5,5,$m-1,5,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		print '<b>'.$date.'</b> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		if ($date != date("Y-m")) 
-			print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=tcity&date='.date("Y-m",mktime(5,5,5,$m+1,5,$y)).'">'.date("Y-m",mktime(5,5,5,$m+1,5,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+			print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=tcity&date='.date("Y-m",mktime(5,5,5,$m+1,5,$y)).'">'.date("Y-m",mktime(5,5,5,$m+1,5,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		$cond = " Date like '{$date}%'";
 	}
 	elseif($_GET['period'] == 'week')
@@ -157,10 +157,10 @@ function tcity()
 			$w = date('W');
 		}
 		
-		print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=tcity&date='.(($w-1)<1?($y-1).'52':$y.($w-1)).'">'.(($w-1)<1?'52/'.($y-1):($w-1).'/'.$y).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+		print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=tcity&date='.(($w-1)<1?($y-1).'52':$y.($w-1)).'">'.(($w-1)<1?'52/'.($y-1):($w-1).'/'.$y).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		print '<b>'.$w.'/'.$y.'</b> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		if ($date != date("YW")) 
-			print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=tcity&date='.(($w+1)>52?($y+1).'1':$y.($w+1)).'">'.(($w+1)>52?'1/'.($y+1):($w+1).'/'.$y).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+			print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=tcity&date='.(($w+1)>52?($y+1).'1':$y.($w+1)).'">'.(($w+1)>52?'1/'.($y+1):($w+1).'/'.$y).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		$cond = " Week='{$date}'";
 	}
 	else 
@@ -180,10 +180,10 @@ function tcity()
 			$m = date("m");
 			$y = date("Y");
 		}
-		print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=tcity&date='.date("Y-m-d",mktime(5,5,5,$m,$d-1,$y)).'">'.date("Y-m-d",mktime(5,5,5,$m,$d-1,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+		print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=tcity&date='.date("Y-m-d",mktime(5,5,5,$m,$d-1,$y)).'">'.date("Y-m-d",mktime(5,5,5,$m,$d-1,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		print '<b>'.$date.'</b> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		if ($date != date("Y-m-d")) 
-			print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=tcity&date='.date("Y-m-d",mktime(5,5,5,$m,$d+1,$y)).'">'.date("Y-m-d",mktime(5,5,5,$m,$d+1,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+			print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=tcity&date='.date("Y-m-d",mktime(5,5,5,$m,$d+1,$y)).'">'.date("Y-m-d",mktime(5,5,5,$m,$d+1,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		$cond = " Date='{$date}'";
 	}
 		
@@ -228,10 +228,10 @@ function tstate()
 			$y = date("Y");
 		}
 		
-		print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=tstate&date='.date("Y-m",mktime(5,5,5,$m-1,5,$y)).'">'.date("Y-m",mktime(5,5,5,$m-1,5,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+		print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=tstate&date='.date("Y-m",mktime(5,5,5,$m-1,5,$y)).'">'.date("Y-m",mktime(5,5,5,$m-1,5,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		print '<b>'.$date.'</b> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		if ($date != date("Y-m")) 
-			print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=tstate&date='.date("Y-m",mktime(5,5,5,$m+1,5,$y)).'">'.date("Y-m",mktime(5,5,5,$m+1,5,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+			print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=tstate&date='.date("Y-m",mktime(5,5,5,$m+1,5,$y)).'">'.date("Y-m",mktime(5,5,5,$m+1,5,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		$cond = " Date like '{$date}%'";
 	}
 	elseif($_GET['period'] == 'week')
@@ -249,10 +249,10 @@ function tstate()
 			$w = date('W');
 		}
 		
-		print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=tstate&date='.(($w-1)<1?($y-1).'52':$y.($w-1)).'">'.(($w-1)<1?'52/'.($y-1):($w-1).'/'.$y).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+		print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=tstate&date='.(($w-1)<1?($y-1).'52':$y.($w-1)).'">'.(($w-1)<1?'52/'.($y-1):($w-1).'/'.$y).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		print '<b>'.$w.'/'.$y.'</b> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		if ($date != date("YW")) 
-			print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=tstate&date='.(($w+1)>52?($y+1).'1':$y.($w+1)).'">'.(($w+1)>52?'1/'.($y+1):($w+1).'/'.$y).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+			print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=tstate&date='.(($w+1)>52?($y+1).'1':$y.($w+1)).'">'.(($w+1)>52?'1/'.($y+1):($w+1).'/'.$y).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		$cond = " Week='{$date}'";
 	}
 	else 
@@ -272,10 +272,10 @@ function tstate()
 			$m = date("m");
 			$y = date("Y");
 		}
-		print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=tstate&date='.date("Y-m-d",mktime(5,5,5,$m,$d-1,$y)).'">'.date("Y-m-d",mktime(5,5,5,$m,$d-1,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+		print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=tstate&date='.date("Y-m-d",mktime(5,5,5,$m,$d-1,$y)).'">'.date("Y-m-d",mktime(5,5,5,$m,$d-1,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		print '<b>'.$date.'</b> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		if ($date != date("Y-m-d")) 
-			print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=tstate&date='.date("Y-m-d",mktime(5,5,5,$m,$d+1,$y)).'">'.date("Y-m-d",mktime(5,5,5,$m,$d+1,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+			print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=tstate&date='.date("Y-m-d",mktime(5,5,5,$m,$d+1,$y)).'">'.date("Y-m-d",mktime(5,5,5,$m,$d+1,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		$cond = " Date='{$date}'";
 	}
 		
@@ -320,10 +320,10 @@ function tcountry()
 			$y = date("Y");
 		}
 		
-		print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=tcountry&date='.date("Y-m",mktime(5,5,5,$m-1,5,$y)).'">'.date("Y-m",mktime(5,5,5,$m-1,5,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+		print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=tcountry&date='.date("Y-m",mktime(5,5,5,$m-1,5,$y)).'">'.date("Y-m",mktime(5,5,5,$m-1,5,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		print '<b>'.$date.'</b> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		if ($date != date("Y-m")) 
-			print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=tcountry&date='.date("Y-m",mktime(5,5,5,$m+1,5,$y)).'">'.date("Y-m",mktime(5,5,5,$m+1,5,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+			print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=tcountry&date='.date("Y-m",mktime(5,5,5,$m+1,5,$y)).'">'.date("Y-m",mktime(5,5,5,$m+1,5,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		$cond = " Date like '{$date}%'";
 	}
 	elseif($_GET['period'] == 'week')
@@ -341,10 +341,10 @@ function tcountry()
 			$w = date('W');
 		}
 		
-		print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=tcountry&date='.(($w-1)<1?($y-1).'52':$y.($w-1)).'">'.(($w-1)<1?'52/'.($y-1):($w-1).'/'.$y).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+		print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=tcountry&date='.(($w-1)<1?($y-1).'52':$y.($w-1)).'">'.(($w-1)<1?'52/'.($y-1):($w-1).'/'.$y).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		print '<b>'.$w.'/'.$y.'</b> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		if ($date != date("YW")) 
-			print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=tcountry&date='.(($w+1)>52?($y+1).'1':$y.($w+1)).'">'.(($w+1)>52?'1/'.($y+1):($w+1).'/'.$y).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+			print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=tcountry&date='.(($w+1)>52?($y+1).'1':$y.($w+1)).'">'.(($w+1)>52?'1/'.($y+1):($w+1).'/'.$y).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		$cond = " Week='{$date}'";
 	}
 	else 
@@ -364,10 +364,10 @@ function tcountry()
 			$m = date("m");
 			$y = date("Y");
 		}
-		print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=tcountry&date='.date("Y-m-d",mktime(5,5,5,$m,$d-1,$y)).'">'.date("Y-m-d",mktime(5,5,5,$m,$d-1,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+		print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=tcountry&date='.date("Y-m-d",mktime(5,5,5,$m,$d-1,$y)).'">'.date("Y-m-d",mktime(5,5,5,$m,$d-1,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		print '<b>'.$date.'</b> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		if ($date != date("Y-m-d")) 
-			print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=tcountry&date='.date("Y-m-d",mktime(5,5,5,$m,$d+1,$y)).'">'.date("Y-m-d",mktime(5,5,5,$m,$d+1,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+			print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=tcountry&date='.date("Y-m-d",mktime(5,5,5,$m,$d+1,$y)).'">'.date("Y-m-d",mktime(5,5,5,$m,$d+1,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		$cond = " Date='{$date}'";
 	}
 		
@@ -412,10 +412,10 @@ function city()
 			$y = date("Y");
 		}
 		
-		print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=city&date='.date("Y-m",mktime(5,5,5,$m-1,5,$y)).'">'.date("Y-m",mktime(5,5,5,$m-1,5,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+		print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=city&date='.date("Y-m",mktime(5,5,5,$m-1,5,$y)).'">'.date("Y-m",mktime(5,5,5,$m-1,5,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		print '<b>'.$date.'</b> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		if ($date != date("Y-m")) 
-			print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=city&date='.date("Y-m",mktime(5,5,5,$m+1,5,$y)).'">'.date("Y-m",mktime(5,5,5,$m+1,5,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+			print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=city&date='.date("Y-m",mktime(5,5,5,$m+1,5,$y)).'">'.date("Y-m",mktime(5,5,5,$m+1,5,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		$cond = " Date like '{$date}%'";
 	}
 	elseif($_GET['period'] == 'week')
@@ -433,10 +433,10 @@ function city()
 			$w = date('W');
 		}
 		
-		print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=city&date='.(($w-1)<1?($y-1).'52':$y.($w-1)).'">'.(($w-1)<1?'52/'.($y-1):($w-1).'/'.$y).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+		print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=city&date='.(($w-1)<1?($y-1).'52':$y.($w-1)).'">'.(($w-1)<1?'52/'.($y-1):($w-1).'/'.$y).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		print '<b>'.$w.'/'.$y.'</b> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		if ($date != date("YW")) 
-			print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=city&date='.(($w+1)>52?($y+1).'1':$y.($w+1)).'">'.(($w+1)>52?'1/'.($y+1):($w+1).'/'.$y).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+			print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=city&date='.(($w+1)>52?($y+1).'1':$y.($w+1)).'">'.(($w+1)>52?'1/'.($y+1):($w+1).'/'.$y).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		$cond = " Week='{$date}'";
 	}
 	else 
@@ -457,10 +457,10 @@ function city()
 			$y = date("Y");
 		}
 		
-		print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=city&date='.date("Y-m-d",mktime(5,5,5,$m,$d-1,$y)).'">'.date("Y-m-d",mktime(5,5,5,$m,$d-1,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+		print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=city&date='.date("Y-m-d",mktime(5,5,5,$m,$d-1,$y)).'">'.date("Y-m-d",mktime(5,5,5,$m,$d-1,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		print '<b>'.$date.'</b> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		if ($date != date("Y-m-d")) 
-			print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=city&date='.date("Y-m-d",mktime(5,5,5,$m,$d+1,$y)).'">'.date("Y-m-d",mktime(5,5,5,$m,$d+1,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+			print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=city&date='.date("Y-m-d",mktime(5,5,5,$m,$d+1,$y)).'">'.date("Y-m-d",mktime(5,5,5,$m,$d+1,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		$cond = " Date='{$date}'";
 	}
 	
@@ -535,10 +535,10 @@ function state()
 			$y = date("Y");
 		}
 		
-		print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=state&date='.date("Y-m",mktime(5,5,5,$m-1,5,$y)).'">'.date("Y-m",mktime(5,5,5,$m-1,5,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+		print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=state&date='.date("Y-m",mktime(5,5,5,$m-1,5,$y)).'">'.date("Y-m",mktime(5,5,5,$m-1,5,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		print '<b>'.$date.'</b> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		if ($date != date("Y-m")) 
-			print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=state&date='.date("Y-m",mktime(5,5,5,$m+1,5,$y)).'">'.date("Y-m",mktime(5,5,5,$m+1,5,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+			print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=state&date='.date("Y-m",mktime(5,5,5,$m+1,5,$y)).'">'.date("Y-m",mktime(5,5,5,$m+1,5,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		$cond = " Date like '{$date}%'";
 	}
 	elseif($_GET['period'] == 'week')
@@ -556,10 +556,10 @@ function state()
 			$w = date('W');
 		}
 		
-		print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=state&date='.(($w-1)<1?($y-1).'52':$y.($w-1)).'">'.(($w-1)<1?'52/'.($y-1):($w-1).'/'.$y).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+		print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=state&date='.(($w-1)<1?($y-1).'52':$y.($w-1)).'">'.(($w-1)<1?'52/'.($y-1):($w-1).'/'.$y).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		print '<b>'.$w.'/'.$y.'</b> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		if ($date != date("YW")) 
-			print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=state&date='.(($w+1)>52?($y+1).'1':$y.($w+1)).'">'.(($w+1)>52?'1/'.($y+1):($w+1).'/'.$y).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+			print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=state&date='.(($w+1)>52?($y+1).'1':$y.($w+1)).'">'.(($w+1)>52?'1/'.($y+1):($w+1).'/'.$y).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		$cond = " Week='{$date}'";
 	}
 	else 
@@ -580,10 +580,10 @@ function state()
 			$y = date("Y");
 		}
 		
-		print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=state&date='.date("Y-m-d",mktime(5,5,5,$m,$d-1,$y)).'">'.date("Y-m-d",mktime(5,5,5,$m,$d-1,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+		print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=state&date='.date("Y-m-d",mktime(5,5,5,$m,$d-1,$y)).'">'.date("Y-m-d",mktime(5,5,5,$m,$d-1,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		print '<b>'.$date.'</b> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		if ($date != date("Y-m-d")) 
-			print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=state&date='.date("Y-m-d",mktime(5,5,5,$m,$d+1,$y)).'">'.date("Y-m-d",mktime(5,5,5,$m,$d+1,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+			print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=state&date='.date("Y-m-d",mktime(5,5,5,$m,$d+1,$y)).'">'.date("Y-m-d",mktime(5,5,5,$m,$d+1,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		$cond = " Date='{$date}'";
 	}
 	
@@ -658,10 +658,10 @@ function country()
 			$y = date("Y");
 		}
 		
-		print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=country&date='.date("Y-m",mktime(5,5,5,$m-1,5,$y)).'">'.date("Y-m",mktime(5,5,5,$m-1,5,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+		print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=country&date='.date("Y-m",mktime(5,5,5,$m-1,5,$y)).'">'.date("Y-m",mktime(5,5,5,$m-1,5,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		print '<b>'.$date.'</b> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		if ($date != date("Y-m")) 
-			print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=country&date='.date("Y-m",mktime(5,5,5,$m+1,5,$y)).'">'.date("Y-m",mktime(5,5,5,$m+1,5,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+			print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=country&date='.date("Y-m",mktime(5,5,5,$m+1,5,$y)).'">'.date("Y-m",mktime(5,5,5,$m+1,5,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		$cond = " Date like '{$date}%'";
 	}
 	elseif($_GET['period'] == 'week')
@@ -679,10 +679,10 @@ function country()
 			$w = date('W');
 		}
 		
-		print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=country&date='.(($w-1)<1?($y-1).'52':$y.($w-1)).'">'.(($w-1)<1?'52/'.($y-1):($w-1).'/'.$y).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+		print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=country&date='.(($w-1)<1?($y-1).'52':$y.($w-1)).'">'.(($w-1)<1?'52/'.($y-1):($w-1).'/'.$y).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		print '<b>'.$w.'/'.$y.'</b> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		if ($date != date("YW")) 
-			print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=country&date='.(($w+1)>52?($y+1).'1':$y.($w+1)).'">'.(($w+1)>52?'1/'.($y+1):($w+1).'/'.$y).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+			print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=country&date='.(($w+1)>52?($y+1).'1':$y.($w+1)).'">'.(($w+1)>52?'1/'.($y+1):($w+1).'/'.$y).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		$cond = " Week='{$date}'";
 	}
 	else 
@@ -703,10 +703,10 @@ function country()
 			$y = date("Y");
 		}
 		
-		print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=country&date='.date("Y-m-d",mktime(5,5,5,$m,$d-1,$y)).'">'.date("Y-m-d",mktime(5,5,5,$m,$d-1,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+		print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=country&date='.date("Y-m-d",mktime(5,5,5,$m,$d-1,$y)).'">'.date("Y-m-d",mktime(5,5,5,$m,$d-1,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		print '<b>'.$date.'</b> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		if ($date != date("Y-m-d")) 
-			print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=country&date='.date("Y-m-d",mktime(5,5,5,$m,$d+1,$y)).'">'.date("Y-m-d",mktime(5,5,5,$m,$d+1,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+			print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=country&date='.date("Y-m-d",mktime(5,5,5,$m,$d+1,$y)).'">'.date("Y-m-d",mktime(5,5,5,$m,$d+1,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		$cond = " Date='{$date}'";
 	}
 	
@@ -781,10 +781,10 @@ function pages()
 			$y = date("Y");
 		}
 		
-		print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=pages&date='.date("Y-m",mktime(5,5,5,$m-1,5,$y)).'">'.date("Y-m",mktime(5,5,5,$m-1,5,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+		print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=pages&date='.date("Y-m",mktime(5,5,5,$m-1,5,$y)).'">'.date("Y-m",mktime(5,5,5,$m-1,5,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		print '<b>'.$date.'</b> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		if ($date != date("Y-m")) 
-			print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=pages&date='.date("Y-m",mktime(5,5,5,$m+1,5,$y)).'">'.date("Y-m",mktime(5,5,5,$m+1,5,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+			print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=pages&date='.date("Y-m",mktime(5,5,5,$m+1,5,$y)).'">'.date("Y-m",mktime(5,5,5,$m+1,5,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		$cond = " Date like '{$date}%'";
 	}
 	elseif($_GET['period'] == 'week')
@@ -802,10 +802,10 @@ function pages()
 			$w = date('W');
 		}
 		
-		print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=pages&date='.(($w-1)<1?($y-1).'52':$y.($w-1)).'">'.(($w-1)<1?'52/'.($y-1):($w-1).'/'.$y).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+		print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=pages&date='.(($w-1)<1?($y-1).'52':$y.($w-1)).'">'.(($w-1)<1?'52/'.($y-1):($w-1).'/'.$y).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		print '<b>'.$w.'/'.$y.'</b> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		if ($date != date("YW")) 
-			print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=pages&date='.(($w+1)>52?($y+1).'1':$y.($w+1)).'">'.(($w+1)>52?'1/'.($y+1):($w+1).'/'.$y).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+			print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=pages&date='.(($w+1)>52?($y+1).'1':$y.($w+1)).'">'.(($w+1)>52?'1/'.($y+1):($w+1).'/'.$y).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		$cond = " Week='{$date}'";
 	}
 	else 
@@ -825,10 +825,10 @@ function pages()
 			$m = date("m");
 			$y = date("Y");
 		}
-		print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=pages&date='.date("Y-m-d",mktime(5,5,5,$m,$d-1,$y)).'">'.date("Y-m-d",mktime(5,5,5,$m,$d-1,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+		print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=pages&date='.date("Y-m-d",mktime(5,5,5,$m,$d-1,$y)).'">'.date("Y-m-d",mktime(5,5,5,$m,$d-1,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		print '<b>'.$date.'</b> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		if ($date != date("Y-m-d")) 
-			print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=pages&date='.date("Y-m-d",mktime(5,5,5,$m,$d+1,$y)).'">'.date("Y-m-d",mktime(5,5,5,$m,$d+1,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+			print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=pages&date='.date("Y-m-d",mktime(5,5,5,$m,$d+1,$y)).'">'.date("Y-m-d",mktime(5,5,5,$m,$d+1,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		$cond = " Date='{$date}'";
 	}
 		
@@ -885,10 +885,10 @@ function bpages()
 			$y = date("Y");
 		}
 		
-		print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=bpages&date='.date("Y-m",mktime(5,5,5,$m-1,5,$y)).'">'.date("Y-m",mktime(5,5,5,$m-1,5,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+		print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=bpages&date='.date("Y-m",mktime(5,5,5,$m-1,5,$y)).'">'.date("Y-m",mktime(5,5,5,$m-1,5,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		print '<b>'.$date.'</b> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		if ($date != date("Y-m")) 
-			print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=bpages&date='.date("Y-m",mktime(5,5,5,$m+1,5,$y)).'">'.date("Y-m",mktime(5,5,5,$m+1,5,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+			print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=bpages&date='.date("Y-m",mktime(5,5,5,$m+1,5,$y)).'">'.date("Y-m",mktime(5,5,5,$m+1,5,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		$cond = " Date like '{$date}%'";
 	}
 	elseif($_GET['period'] == 'week')
@@ -906,10 +906,10 @@ function bpages()
 			$w = date('W');
 		}
 		
-		print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=bpages&date='.(($w-1)<1?($y-1).'52':$y.($w-1)).'">'.(($w-1)<1?'52/'.($y-1):($w-1).'/'.$y).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+		print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=bpages&date='.(($w-1)<1?($y-1).'52':$y.($w-1)).'">'.(($w-1)<1?'52/'.($y-1):($w-1).'/'.$y).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		print '<b>'.$w.'/'.$y.'</b> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		if ($date != date("YW")) 
-			print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=bpages&date='.(($w+1)>52?($y+1).'1':$y.($w+1)).'">'.(($w+1)>52?'1/'.($y+1):($w+1).'/'.$y).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+			print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=bpages&date='.(($w+1)>52?($y+1).'1':$y.($w+1)).'">'.(($w+1)>52?'1/'.($y+1):($w+1).'/'.$y).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		$cond = " Week='{$date}'";
 	}
 	else 
@@ -930,10 +930,10 @@ function bpages()
 			$y = date("Y");
 		}
 		
-		print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=bpages&date='.date("Y-m-d",mktime(5,5,5,$m,$d-1,$y)).'">'.date("Y-m-d",mktime(5,5,5,$m,$d-1,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+		print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=bpages&date='.date("Y-m-d",mktime(5,5,5,$m,$d-1,$y)).'">'.date("Y-m-d",mktime(5,5,5,$m,$d-1,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		print '<b>'.$date.'</b> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		if ($date != date("Y-m-d")) 
-			print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=bpages&date='.date("Y-m-d",mktime(5,5,5,$m,$d+1,$y)).'">'.date("Y-m-d",mktime(5,5,5,$m,$d+1,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+			print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=bpages&date='.date("Y-m-d",mktime(5,5,5,$m,$d+1,$y)).'">'.date("Y-m-d",mktime(5,5,5,$m,$d+1,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		$cond = " Date='{$date}'";
 	}
 	
@@ -1004,7 +1004,8 @@ function bpages()
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
 function days()
-{				
+{		
+	global $gConfig;		
 	if($_GET['period'] == 'month')
 	{
 		if(isset($_GET['date']))
@@ -1021,10 +1022,10 @@ function days()
 			$y = date("Y");
 		}
 		
-		print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=days&date='.date("Y-m",mktime(5,5,5,$m-1,5,$y)).'">'.date("Y-m",mktime(5,5,5,$m-1,5,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+		print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=days&date='.date("Y-m",mktime(5,5,5,$m-1,5,$y)).'">'.date("Y-m",mktime(5,5,5,$m-1,5,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		print '<b>'.$date.'</b> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		if ($date != date("Y-m")) 
-			print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=days&date='.date("Y-m",mktime(5,5,5,$m+1,5,$y)).'">'.date("Y-m",mktime(5,5,5,$m+1,5,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+			print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=days&date='.date("Y-m",mktime(5,5,5,$m+1,5,$y)).'">'.date("Y-m",mktime(5,5,5,$m+1,5,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		$cond = " Date like '{$date}%'";
 	}
 	elseif($_GET['period'] == 'week')
@@ -1042,10 +1043,10 @@ function days()
 			$w = date('W');
 		}
 		
-		print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=days&date='.(($w-1)<1?($y-1).'52':$y.($w-1)).'">'.(($w-1)<1?'52/'.($y-1):($w-1).'/'.$y).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+		print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=days&date='.(($w-1)<1?($y-1).'52':$y.($w-1)).'">'.(($w-1)<1?'52/'.($y-1):($w-1).'/'.$y).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		print '<b>'.$w.'/'.$y.'</b> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		if ($date != date("YW")) 
-			print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=days&date='.(($w+1)>52?($y+1).'1':$y.($w+1)).'">'.(($w+1)>52?'1/'.($y+1):($w+1).'/'.$y).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+			print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=days&date='.(($w+1)>52?($y+1).'1':$y.($w+1)).'">'.(($w+1)>52?'1/'.($y+1):($w+1).'/'.$y).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		$cond = " Week='{$date}'";
 	}
 	else 
@@ -1066,10 +1067,10 @@ function days()
 			$y = date("Y");
 		}
 		
-		print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=days&date='.date("Y-m-d",mktime(5,5,5,$m,$d-1,$y)).'">'.date("Y-m-d",mktime(5,5,5,$m,$d-1,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+		print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=days&date='.date("Y-m-d",mktime(5,5,5,$m,$d-1,$y)).'">'.date("Y-m-d",mktime(5,5,5,$m,$d-1,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		print '<b>'.$date.'</b> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		if ($date != date("Y-m-d")) 
-			print '<a href="/admin/stat_banners.php?period='.$_GET['period'].'&action=days&date='.date("Y-m-d",mktime(5,5,5,$m,$d+1,$y)).'">'.date("Y-m-d",mktime(5,5,5,$m,$d+1,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
+			print '<a href="' . $gConfig['site_url'] . 'admin/stat_banners.php?period='.$_GET['period'].'&action=days&date='.date("Y-m-d",mktime(5,5,5,$m,$d+1,$y)).'">'.date("Y-m-d",mktime(5,5,5,$m,$d+1,$y)).'</a> &nbsp;&nbsp;|&nbsp;&nbsp; ';
 		$cond = " Date='{$date}'";
 	}
 	

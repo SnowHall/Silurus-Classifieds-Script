@@ -7,15 +7,15 @@
  * @website		http://snowhall.com/silurus
  * @email		support@snowhall.com
  * 
- * @version		1.0
- * @date		May 7, 2009
+ * @version		2.0
+ * @date		March 7, 2013
  * 
  * Silurus is a professionally developed PHP Classifieds script that was built for you.
  * Whether you are running classifieds for autos, motorcycles, bicycles, rv's, guns,
  * horses, or general merchandise, our product is the right package for you.
  * It has template system and no limit to usage with free for any changes.
  *
- * Copyright (c) 2009
+ * Copyright (c) 2009-2013
  */
  
 $smarty->assign("site_url", $gConfig['site_url']);
@@ -24,7 +24,7 @@ $smarty->assign("site_keywords", $gConfig['site_keywords']);
 $smarty->assign("site_description", $gConfig['site_description']);
 $smarty->assign("site_slogan1", $gConfig['logo_title']);
 $smarty->assign("site_slogan2", $gConfig['logo_slogan']);
-addNavigation('/','Home');
+addNavigation('index.php','Home');
 	
 $topmenu = array();
 $q = mysql_query("select * from Menu where Parent=0 and ((Login=0)or(Login=1&&".intval($_SESSION['memberID']).">0)or(Login=2&&".intval($_SESSION['memberID'])."=0)) order by Prior");

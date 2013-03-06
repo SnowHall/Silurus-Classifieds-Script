@@ -1,21 +1,21 @@
 <?php
 /**
  * Silurus Classifieds Builder
- * 
- * 
+ *
+ *
  * @author		SnowHall - http://snowhall.com
  * @website		http://snowhall.com/silurus
  * @email		support@snowhall.com
- * 
- * @version		1.0
- * @date		May 7, 2009
- * 
+ *
+ * @version		2.0
+ * @date		March 7, 2013
+ *
  * Silurus is a professionally developed PHP Classifieds script that was built for you.
  * Whether you are running classifieds for autos, motorcycles, bicycles, rv's, guns,
  * horses, or general merchandise, our product is the right package for you.
  * It has template system and no limit to usage with free for any changes.
  *
- * Copyright (c) 2009
+ * Copyright (c) 2009-2013
  */
 
 include("./include_php/init.php");
@@ -33,8 +33,8 @@ $rel_categ = array();
 while($arr = mysql_fetch_assoc($q))
 {
 	$rel_categ[$arr['ID']] = $arr;
-}	
-$curUrl = '/category.php?';    
+}
+$curUrl = 'category.php?';
 $smarty->assign("rel_categ",  $rel_categ);
 $smarty->assign("cur_url",  $curUrl);
 
@@ -44,18 +44,19 @@ if(is_array($_GET) && count($_GET)>0)
 		if ($key != 'border' && $key != 'bdesc')
 			$curUrl .= "$key=$value&";
 }
-	
+
 $order = (isset($_REQUEST['border'])?$_REQUEST['border']:'title');
-$desc = (isset($_REQUEST['bdesc'])?true:false);		
-$books = array('order'=>$order, 'desc'=>$desc, 'cur_url'=>$curUrl, 'prefix'=>'b', 'list'=>array());		
+$desc = (isset($_REQUEST['bdesc'])?true:false);
+$books = array('order'=>$order, 'desc'=>$desc, 'cur_url'=>$curUrl, 'prefix'=>'b', 'list'=>array());
 if($order == 'date')  {$order = 's.date';}
 elseif($order == 'price')  {$order = 's.price';}
 elseif($order == 'quality')  {$order = 'c.Title';}
-else {$order = 's.Title';}		
+else {$order = 's.Title';}
 if(isset($_REQUEST['bdesc'])) $order .= ' desc ';
+$featured = 's.featured DESC, s.featured_date DESC';
 
 $iDivis = 10;
-$iCurr  = 1;	
+$iCurr  = 1;
 if (!isset($_REQUEST['commPage']))
 {
 	$sLimit =  ' LIMIT 0,'.$iDivis;
@@ -66,18 +67,18 @@ else
 	$iCurr = (int)$_REQUEST['commPage'];
 	$sLimit =  ' LIMIT '.($iCurr - 1)*$iDivis.','.$iDivis;
 }
-	
-$sQuery = ("select s.*,c.Title as ctitle from Store s inner join StoreCategories c on c.ID=s.categoryID where ".($_SESSION['location']['condition']!=''?'s.userID in '.$_SESSION['location']['condition'].' and ':'')." s.type=0 and  s.status=0 ".(intval($_REQUEST['ID'])>0?'and categoryID='.$_REQUEST['ID']:'')."  order by $order ");	
-$rElems = mysql_query( $sQuery );		
-$iNums = mysql_num_rows($rElems);	
+
+$sQuery = ("select s.*,c.Title as ctitle from Store s inner join StoreCategories c on c.ID=s.categoryID where ".($_SESSION['location']['condition']!=''?'s.userID in '.$_SESSION['location']['condition'].' and ':'')." s.type=0 and  s.status=0 ".(intval($_REQUEST['ID'])>0?'and categoryID='.$_REQUEST['ID']:'')."  order by $featured, $order ");
+$rElems = mysql_query( $sQuery );
+$iNums = mysql_num_rows($rElems);
 $count = (int)($iNums/$iDivis);
 if(($iNums/$iDivis) > (int)($iNums/$iDivis)) $count++;
-$aPaging =  ($iNums > $iDivis ? MakePaging($iNums,$iCurr,$iDivis,4,'commPage','') : '');	
+$aPaging =  ($iNums > $iDivis ? MakePaging($iNums,$iCurr,$iDivis,4,'commPage','') : '');
 
 $rElems = mysql_query( $sQuery.$sLimit );
 while($book = mysql_fetch_assoc($rElems))
 {
-	if($color == 'f5f5f5') $color = 'ffffff'; else  $color = 'f5f5f5';	
+	if($color == 'f5f5f5') $color = 'ffffff'; else  $color = 'f5f5f5';
 	$temp = array();
 	$temp['Color'] = $color;
 	$temp['ID'] = $book['ID'];
@@ -87,7 +88,8 @@ while($book = mysql_fetch_assoc($rElems))
 	$temp['Price'] = number_format($book['price'],2,".","");
 	$temp['Vote'] = $vote1;
 	$temp['ctitle'] = $book['ctitle'];
-	$books['list'][] = $temp;			
+    $temp['featured'] = $book['featured'];
+	$books['list'][] = $temp;
 }
 $smarty->assign("sbooks",  $books);
 $smarty->assign("aPaging",  $aPaging);
@@ -97,8 +99,8 @@ include("./ap_contact.php");
 
 
 $HEADERTEXT='Products for Sale';
-addNavigation('/category.php',$HEADERTEXT);
-if(isset($categ['Title'])) 
+addNavigation('category.php',$HEADERTEXT);
+if(isset($categ['Title']))
 {
 	addNavigation('',$categ['Title']);
 	$HEADERTEXT = $categ['Title'].' :: '.$HEADERTEXT;

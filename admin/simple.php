@@ -7,15 +7,15 @@
  * @website		http://snowhall.com/silurus
  * @email		support@snowhall.com
  * 
- * @version		1.0
- * @date		May 7, 2009
+ * @version		2.0
+ * @date		March 7, 2013
  * 
  * Silurus is a professionally developed PHP Classifieds script that was built for you.
  * Whether you are running classifieds for autos, motorcycles, bicycles, rv's, guns,
  * horses, or general merchandise, our product is the right package for you.
  * It has template system and no limit to usage with free for any changes.
  *
- * Copyright (c) 2009
+ * Copyright (c) 2009-2013
  */
 
 include("../include_php/admin_init.php");
@@ -27,19 +27,19 @@ $smarty->assign("page_header_text",  "Edit Text pages");
 if(intval($_POST['editID']) > 0)
 {		
 	mysql_query("update Simple set Title='".mysql_escape_string($_POST['Title'])."',Text='".mysql_escape_string($_POST['Text'])."' where ID=".intval($_POST['editID']));	
-	header("location: /admin/simple.php");
+	header("location: {$gConfig['site_url']}admin/simple.php");
 }
 
 if(isset($_POST['addgo']) && trim($_POST['Title'])!='')
 {		
 	mysql_query("insert into Simple set Title='".mysql_escape_string($_POST['Title'])."',Text='".mysql_escape_string($_POST['Text'])."'");	
-	header("location: /admin/simple.php");
+	header("location: {$gConfig['site_url']}admin/simple.php");
 }
 
 if(intval($_REQUEST['delID']) > 0)
 {		
 	mysql_query("delete from Simple where ID=".intval($_REQUEST['delID']));	
-	header("location: /admin/simple.php");
+	header("location: {$gConfig['site_url']}admin/simple.php");
 }
 
 $action = $_GET['action'];
@@ -80,11 +80,11 @@ function getList( $iArticleID = '' )
 {
 	global $site;
 	
-	$ret = '<a href="/admin/simple.php?action=add">Add New Page</a><br><br><table>';
+	$ret = '<a href="' . $gConfig['site_url'] . 'admin/simple.php?action=add">Add New Page</a><br><br><table>';
 	$q = mysql_query("select * from Simple");
 	while($a = mysql_fetch_assoc($q))
 	{
-		$ret.='<tr><td><a href="/simple.php?ID='.$a['ID'].'" target="_blank">'.$a['Title'].'</a></td><td><a href="/admin/simple.php?action=edit&ID='.$a['ID'].'">Edit</a>&nbsp;&nbsp;&nbsp;<a href="/admin/simple.php?delID='.$a['ID'].'">Delete</a></td></tr>';
+		$ret.='<tr><td><a href="simple.php?ID='.$a['ID'].'" target="_blank">'.$a['Title'].'</a></td><td><a href="admin/simple.php?action=edit&ID='.$a['ID'].'">Edit</a>&nbsp;&nbsp;&nbsp;<a href="admin/simple.php?delID='.$a['ID'].'">Delete</a></td></tr>';
 	}
 	$ret.='</table>';
 	return  $ret;
@@ -96,7 +96,7 @@ function getAdd( )
 	$ret = '';
 	$ret .= '<div class="navigationLinks">' . "\n";
 		$ret .= '<span>' . "\n";
-			$ret .= '<a href="/admin/simple.php">' . "\n";
+			$ret .= '<a href="' . $gConfig['site_url'] . 'admin/simple.php">' . "\n";
 				$ret .= 'All Pages' . "\n";
 			$ret .= '</a>' . "\n";
 		$ret .= '</span>' . "\n";		

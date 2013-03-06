@@ -7,15 +7,15 @@
  * @website		http://snowhall.com/silurus
  * @email		support@snowhall.com
  * 
- * @version		1.0
- * @date		May 7, 2009
+ * @version		2.0
+ * @date		March 7, 2013
  * 
  * Silurus is a professionally developed PHP Classifieds script that was built for you.
  * Whether you are running classifieds for autos, motorcycles, bicycles, rv's, guns,
  * horses, or general merchandise, our product is the right package for you.
  * It has template system and no limit to usage with free for any changes.
  *
- * Copyright (c) 2009
+ * Copyright (c) 2009-2013
  */
 
 include("./include_php/init.php");
@@ -79,19 +79,19 @@ else
 	$ret .= '
 	<span class="faq_header">'.$text[0]['Title'].'</span><br />
 	'.$text[0]['Text'].'<Br />
-	<a href="/faq.php?faq" class="faq_links"><img src="/img/arr.gif" border="0" /> See Full list of FAQs</a><br /><br />
+	<a href="faq.php?faq" class="faq_links"><img src="img/arr.gif" border="0" /> See Full list of FAQs</a><br /><br />
 	
 	<span class="faq_header">'.$text[1]['Title'].'</span><br />
 	'.$text[1]['Text'].'<Br />
-	<a href="/faq.php?ttips" class="faq_links"><img src="/img/arr.gif" border="0" /> Read Technical Tips</a><br /><br />
+	<a href="faq.php?ttips" class="faq_links"><img src="img/arr.gif" border="0" /> Read Technical Tips</a><br /><br />
 	
 	<span class="faq_header">'.$text[2]['Title'].'</span><br />
 	'.$text[2]['Text'].'<Br />
-	<a href="/faq.php?stips" class="faq_links"><img src="/img/arr.gif" border="0" /> See More Tips</a><br /><br />
+	<a href="faq.php?stips" class="faq_links"><img src="img/arr.gif" border="0" /> See More Tips</a><br /><br />
 	
 	<span class="faq_header">'.$text[3]['Title'].'</span><br />
 	'.$text[3]['Text'].'<Br />
-	<a href="/simple.php?ID=5" class="faq_links"><img src="/img/arr.gif" border="0" /> Contact us at Dumpthatbook.com</a><br /><br />
+	<a href="simple.php?ID=5" class="faq_links"><img src="img/arr.gif" border="0" /> Contact us at Dumpthatbook.com</a><br /><br />
 	';	
 	
 	$smarty->assign("content_g",  $text);

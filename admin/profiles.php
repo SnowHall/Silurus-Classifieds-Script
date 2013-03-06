@@ -1,21 +1,21 @@
 <?php
 /**
  * Silurus Classifieds Builder
- * 
- * 
+ *
+ *
  * @author		SnowHall - http://snowhall.com
  * @website		http://snowhall.com/silurus
  * @email		support@snowhall.com
- * 
- * @version		1.0
- * @date		May 7, 2009
- * 
+ *
+ * @version		2.0
+ * @date		March 7, 2013
+ *
  * Silurus is a professionally developed PHP Classifieds script that was built for you.
  * Whether you are running classifieds for autos, motorcycles, bicycles, rv's, guns,
  * horses, or general merchandise, our product is the right package for you.
  * It has template system and no limit to usage with free for any changes.
  *
- * Copyright (c) 2009
+ * Copyright (c) 2009-2013
  */
 
 include("../include_php/admin_init.php");
@@ -34,7 +34,7 @@ if ( $_POST['prf_form_submit'] && !$demo_mode)
 
     $owner = $PARTNER ? $_SESSION['partnerID'] : 0;
     foreach($_POST as $val=>$key)
-    {    	
+    {
     	if($key=='on')
     	{
 	        switch ( $_POST['prf_form_submit'] )
@@ -47,12 +47,15 @@ if ( $_POST['prf_form_submit'] && !$demo_mode)
 			    break;
 			    case 'Activate':
 			    	mysql_query( "UPDATE `Profiles` SET `Status` = 'Active' WHERE `ID` = '" . (int)$val . "'" );
-				
 			    break;
 			    case 'Deactivate':
 			    	mysql_query( "UPDATE `Profiles` SET `Status` = 'Unconfirmed' WHERE `ID` = '" . (int)$val . "'" );
-		    
 				break;
+                case 'Ban':
+                    $banIp = mysql_query('SELECT `ip` FROM `Profiles` WHERE `ID` = "'.(int)$val.'"');
+                    $resultBanIp = mysql_fetch_assoc($banIp);
+                    mysql_query('INSERT IGNORE INTO `BanList` (`ip`) VALUES ("'.$resultBanIp['ip'].'")');
+                    break;
 			}
     	}
     }
@@ -118,10 +121,10 @@ if (isset($_GET['media']) && isset($_GET['status']))
 	$sqlGroup    = " GROUP BY `Profiles`.`ID`";
 }
 
-$sQuery = "SELECT 
+$sQuery = "SELECT
 				  *
-				   FROM `Profiles` 
-   				   
+				   FROM `Profiles`
+
 				   WHERE 1 $email_part  $prof_part  $sqlWhere $sqlGroup";
 
 $rData = mysql_query($sQuery);
@@ -136,22 +139,23 @@ if ( $sortor == "" )
     $sortor = "LastLoggedIn";
 }
 
-
+$tpath = $smarty->get_template_vars('template_path');
 if ( $_GET['sortor'] && ($_GET['sortor'] != $_SESSION['sortor']) )
 {
     $sorttype = "DESC";
+    $sortor_image = "<img src=\"{$tpath}images/desc_order.gif\">";
 }
 elseif ( $_GET['sortor'] )
 {
     if ( $_SESSION['sorttype'] == "ASC" )
     {
    		$sorttype = "DESC";
-   		$sortor_image = "<img src=\"./images/desc_order.gif\">";
+   		$sortor_image = "<img src=\"{$tpath}images/desc_order.gif\">";
     }
     else
     {
     	$sorttype = "ASC";
-    	$sortor_image = "<img src=\"./images/asc_order.gif\">";
+    	$sortor_image = "<img src=\"{$tpath}images/asc_order.gif\">";
     }
 }
 
@@ -171,8 +175,8 @@ $status_arr[3] = "Rejected";
 $status_arr[4] = "Suspended";
 
 $sQuery = "SELECT *
-				   FROM `Profiles` 
-   				   
+				   FROM `Profiles`
+
 				   WHERE 1 $email_part $aff_part_w $prof_part $sex_part $sqlWhere $sqlGroup ORDER BY $sortor $sorttype LIMIT $real_first_p, $p_per_page;";
 
 $result = mysql_query($sQuery);
@@ -182,7 +186,7 @@ ob_start();
 ?>
 								<center><table cellspacing="1" cellpadding="2" border="0" width="70%" align="center" bgcolor="#cccccc" >
 									<tr>
-										<td bgcolor="#E5E5E5" class="text" align="left"><a href="<?php echo $site['url_admin']; ?>profiles.php">Total registered members:</a></td>
+										<td bgcolor="#E5E5E5" class="text" align="left"><a href="admin/profiles.php">Total registered members:</a></td>
 										<td bgcolor="#E5E5E5" width="50" class="text" align="right"><b><?php echo $n_arr[0]; ?></b></td>
 									</tr>
 <?php
@@ -211,7 +215,7 @@ while( list( $key, $val ) = each( $status_arr ) )
 			continue;
 		}
 	}
-	
+
 	$n_arr = mysql_fetch_assoc(mysql_query( "SELECT COUNT(*) FROM `Profiles` WHERE $sAdd" ));
 
 	if ( $n_arr[0])
@@ -225,14 +229,14 @@ while( list( $key, $val ) = each( $status_arr ) )
 									</tr>
 <?
     }
-    
+
 }
 $aMedia = array('photo');
 foreach ($aMedia as $iK=>$sVal)
 {
 	$sqlUnp = "SELECT * FROM `media` WHERE `med_status` = 'passive' AND `med_type`= '$sVal' GROUP BY `med_prof_id`";
 	$rUnp = mysql_query($sqlUnp);
-	
+
 	if ($rUnp && mysql_num_rows($rUnp))
 	{
 		?>
@@ -250,7 +254,7 @@ foreach ($aMedia as $iK=>$sVal)
 								</table></center>
 
 <br><hr><br>
-	
+
 
 <form method="get" action="profiles.php">
 <table align="center" width="100%" cellspacing=2 cellpadding=2  border=0>
@@ -281,37 +285,38 @@ else
 ?>
 <tr class=panel>
 	<td>&nbsp;</td>
-	<td align=center>&nbsp;<a href="profiles.php?<? echo "$inc_profiles"?>sortor=ID&p_per_page=<? echo "$p_per_page"?>">ID</a>&nbsp;<? if ( $sortor=="ID" ) echo "$sortor_image" ?></td>
-	
-	<td align=center>&nbsp;<a href="profiles.php?<? echo "$inc_profiles"?>sortor=NickName&p_per_page=<? echo "$p_per_page"?>">NickName</a>&nbsp;<? if ( $sortor =="NickName" ) echo "$sortor_image" ?></td>
-	
+	<td align=center>&nbsp;<a href="admin/profiles.php?<? echo "$inc_profiles"?>sortor=ID&p_per_page=<? echo "$p_per_page"?>">ID</a>&nbsp;<? if ( $sortor=="ID" ) echo @$sortor_image ?></td>
+
+	<td align=center>&nbsp;<a href="admin/profiles.php?<? echo "$inc_profiles"?>sortor=NickName&p_per_page=<? echo "$p_per_page"?>">NickName</a>&nbsp;<? if ( $sortor =="NickName" ) echo @$sortor_image ?></td>
+
 	<td align=center>&nbsp;E-mail&nbsp;</td>
-	
+
 	<td align=center>Registered</td>
-	
-	<td align=center>&nbsp;<a href="profiles.php?<? echo "$inc_profiles"?>sortor=LastLoggedIn&p_per_page=<? echo "$p_per_page"?>">Last Visited</a>&nbsp;<? if ( $sortor=="LastLoggedIn" ) echo "$sortor_image" ?></td>
-	
+
+	<td align=center>&nbsp;<a href="admin/profiles.php?<? echo "$inc_profiles"?>sortor=LastLoggedIn&p_per_page=<? echo "$p_per_page"?>">Last Visited</a>&nbsp;<? if ( $sortor=="LastLoggedIn" ) echo @$sortor_image ?></td>
+
+    <td>Ip</td>
 </tr>
 <?
-    
+
 	while ( $p_arr = mysql_fetch_array( $result ) )
     {
 		$col = "table";
 		$sEmail = $p_arr['Status'] == 'Unconfirmed' ? '<span style="background-color: #FF6666;">'.$p_arr['Email'].'</span>' : '<span style="background-color:'.$sActEmColor.';">'.$p_arr['Email'].'</span>';
 ?>
 <tr class=<? echo $col; ?> bgcolor="#ffffff">
-	<td align=center><input type=checkbox name="<? echo $p_arr[ID]?>"></td>
-	
-	<td>&nbsp;<a target="_blank" href="/profile.php?ID=<? echo $p_arr[ID]; ?>"><? echo $p_arr[ID]; ?></a>&nbsp;</td>
-	
+	<td align=center><input type=checkbox name="<? echo $p_arr['ID']?>"></td>
+
+	<td>&nbsp;<a target="_blank" href="profile.php?ID=<? echo $p_arr['ID']; ?>"><? echo $p_arr['ID']; ?></a>&nbsp;</td>
+
 	<td>&nbsp;<? echo $p_arr['NickName']; ?>&nbsp;</td>
-	
+
 	<td>&nbsp;<? echo $sEmail; ?>&nbsp;</td>
-	
+
 	<td align=center><?echo date("d-m-Y H:i",strtotime($p_arr['LastReg']))?></td>
-	
-	<td align=center><?echo date("d-m-Y H:i",strtotime($p_arr['LastLoggedInCur']))?></td>
-	
+
+	<td align=center><?echo date("d-m-Y H:i",strtotime($p_arr['LastLoggedIn']))?></td>
+    <td align=center>&nbsp;<? echo $p_arr['ip']; ?>&nbsp;</td>
 
 </tr>
 <?
@@ -333,16 +338,20 @@ else
 			    <td width="90" align="center"></td>
 			    <td width="90" align="center"><input class=text type=submit name="prf_form_submit" value="Activate"></td>
 			    <td width="90" align="center"><input class=text type=submit name="prf_form_submit" value="Deactivate"></td>
-			</tr>
+                <td width="90" align="center"><input class=text type=submit name="prf_form_submit" value="Ban"></td>
+            </tr>
 		</table>
 	</td>
+</tr>
+<tr>
+    <a href="admin/ban_list.php">Ban list</a>
 </tr>
 <tr>
 
     <td  align="center"><hr style="width:90%; color:#e4e4e4; height:1px;">
     <b>Subject</b><br>
     <input type=text name=Message_subj style="width:540px;"><br>
-    <b>Text</b><br>    
+    <b>Text</b><br>
     <textarea name="Message" style="width:540px; height:100px;"></textarea></td>
 </tr>
 <tr>
@@ -363,23 +372,23 @@ $smarty->display('index.tpl');
 function profile_delete( $ID )
 {
 	$ID = (int)$ID;
-	
+
 	if ( !$ID )
 	    return false;
-				
-		
+
+
 	$aMedia = mysql_fetch_assoc(mysql_query("select * from Profiles where ID=".$ID));
     $medDir = "../media/images/profile/" . $ID . "/";
 	@unlink( $medDir . 'icon_' . $aMedia['PrimPhoto'] );
 	@unlink( $medDir . 'photo_' . $aMedia['PrimPhoto'] );
 	@unlink( $medDir . 'thumb_' . $aMedia['PrimPhoto'] );
 	@unlink( $medDir  );
-	
-	mysql_query( "DELETE FROM `Profiles` WHERE `ID` = '{$ID}'" );	
+
+	mysql_query( "DELETE FROM `Profiles` WHERE `ID` = '{$ID}'" );
 	mysql_query( "DELETE FROM `ProfilesRating` WHERE `voteID` = {$ID}" );
 	$sCacheFile = $dir['cache'] . 'user' . $ID . '.php';
 	@unlink( $sCacheFile );
-	
+
 	$q = mysql_query("select * from Books where userID=$ID");
 	while($arr = mysql_fetch_assoc($q))
 	{
@@ -412,7 +421,7 @@ function profile_send_message( $ID, $subj,$message )
 {
 	global $site;
 
-	$p_arr = mysql_fetch_assoc(mysql_query( "SELECT `ID`, `Email` FROM `Profiles` WHERE `ID` = '$ID'" ));
+	$p_arr = mysql_fetch_assoc(mysql_query( "SELECT `ID`, `Email`, `Ip` FROM `Profiles` WHERE `ID` = '$ID'" ));
 
 	if ( !$p_arr )
 	    return false;

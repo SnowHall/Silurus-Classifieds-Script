@@ -35,14 +35,14 @@
 <br />
   <div style="border:1px solid #d2d2d2;width:91%;padding:15px;font-size:16px;">
     <b>Didn't find what you were looking for?</b><br />
-    <form name="search_form2" method="GET" action="/search.php">
+    <form name="search_form2" method="GET" action="search.php">
     <input type="hidden" name="go">
 	<table width="100%" style="padding-top:10px;">
 	  <tr>
 	    <td><b>Search Products:</b> </td>
 		<td><input type="text" name="keywords"/> </td>
-		<td><a href="javascript:void(0);" onclick="document.search_form2.submit();"><img src="/{$template_path}img/search_go.gif" border="0" /></a> </td>
-		<td> <b>Or, post an add for a <a href="/add_wproduct.php" style="color:#1a7694;font-size:17px;">Wanted Product</a></b></td>
+		<td><a href="javascript:void(0);" onclick="document.search_form2.submit();"><img src="{$template_path}img/search_go.gif" border="0" /></a> </td>
+		<td> <b>Or, post an add for a <a href="add_wproduct.php" style="color:#1a7694;font-size:17px;">Wanted Product</a></b></td>
 	  </tr>
 	</table>
 	</form>

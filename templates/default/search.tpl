@@ -5,27 +5,27 @@
 <form name="search_book_adv">
 <input type="hidden" name="go">
 <table width="100%" cellpadding="0" cellspacing="0">
-   
+
    <tr >
     <td  width="470px" class="formback" valign="top">
 	  <table width="100%" cellpadding="0" cellspacing="0">
-	  
+
 	  {assign var="tr" value=0}
-	  {foreach from=$props item=oItem} 
+	  {foreach from=$props item=oItem}
 	   	 {if $tr==0}
 	   	   <tr>
 		    <td class="small_grey" width="200px" valign="top">
 			  Category:
 			</td>
 			<td width="300px">
-		        <select name="categoryID" style="width:250px;" onchange="window.location='{$_SERVER.PHP_SELF}?categoryID='+this.value;">
+		        <select name="categoryID" style="width:250px;" onchange="top.window.location='{$_SERVER.PHP_SELF}?categoryID='+this.value;">
 				  {$categ_list}
 				</select><br><br>
-			</td>			
+			</td>
 		  </tr>
 	   	 {/if}
-	   	 {assign var="tr" value=$tr+1}   	  
-		  
+	   	 {assign var="tr" value=$tr+1}
+
 	   	 <tr>
 	      <td class="small_grey">
 			  {$oItem.Name}
@@ -33,31 +33,31 @@
 		  <td>
 	        {if $oItem.Type==4}
 	          {$oItem.subprop}<br>
-	        {/if}        
+	        {/if}
 	        {if $oItem.Type==6 || $oItem.Type==5}
 	          <select name="prop{$oItem.ID}[]" style="width:250px;height:100px;" multiple>
-				  {foreach from=$oItem.subprop item=oSub} 
+				  {foreach from=$oItem.subprop item=oSub}
 				    <option selected value="{$oSub.ID}" >{$oSub.Name}</option>
 				  {/foreach}
 			  </select><br>
 	        {/if}
 	        {if $oItem.Type==7}
-	              {foreach from=$oItem.subprop item=oSub} 
+	              {foreach from=$oItem.subprop item=oSub}
 				    <input type="checkbox" name="prop{$oItem.ID}[]" value="{$oSub.ID}" checked>{$oSub.Name}<br>
 				  {/foreach}
 	        {/if}<br>
 	      </td>
-	      </tr>	    
-	      
-	      {if $tr>=count($props)/2} 
-	      {assign var="tr" value=-5}   	  
+	      </tr>
+
+	      {if $tr>=count($props)/2}
+	      {assign var="tr" value=-5}
 			 </table>
 			</td>
 			<td width="50px">&nbsp;</td>
 			<td  width="470px" class="formback" valign="top">
 			  <table width="100%" cellpadding="0" cellspacing="0">
-			  
-			    <tr>		    
+
+			    <tr>
 				 <td class="small_grey" width="200px" valign="top">
 				  Keywords:
 				 </td>
@@ -65,27 +65,27 @@
 				  <input type="text" name="keywords" style="width:250px" /><br><br>
 				 </td>
 			   </tr>
-		  {/if}	 
-		      
+		  {/if}
+
 	  {/foreach}
-	  {if count($props) == 0} 
+	  {if count($props) == 0}
 	    <tr>
 		    <td class="small_grey" width="200px" valign="top">
 			  Category:
 			</td>
 			<td width="300px">
-		        <select name="categoryID" style="width:250px;" onchange="window.location='{$_SERVER.PHP_SELF}?categoryID='+this.value;">
+		        <select name="categoryID" style="width:250px;" onchange="top.window.location='{$_SERVER.PHP_SELF}?categoryID='+this.value;">
 				  {$categ_list}
 				</select><br><br>
-			</td>			
+			</td>
 		  </tr>
 		  </table>
 		</td>
 		<td width="50px">&nbsp;</td>
 		<td  width="470px" class="formback" valign="top">
 		  <table width="100%" cellpadding="0" cellspacing="0">
-		  
-		    <tr>		    
+
+		    <tr>
 			 <td class="small_grey" width="200px" valign="top">
 			  Keywords:
 			 </td>
@@ -93,27 +93,27 @@
 			  <input type="text" name="keywords" style="width:250px" /><br><br>
 			 </td>
 		   </tr>
-	  {/if} 
-	  
+	  {/if}
+
 	  </table>
 	</td>
-  </tr> 
-  
-  
-  
+  </tr>
+
+
+
   <tr>
     <td colspan="5">
 	  <br /><br /><div class="dotted_line"></div>
     </td>
   </tr>
-  
+
   <tr>
     <td align="right" colspan="5"><br />
-	   <a href="javascript:void(0);" onclick="document.search_book_adv.submit();"><img src="/{$template_path}img/search_start.gif" border="0" /></a>
+	   <a href="javascript:void(0);" onclick="document.search_book_adv.submit();"><img src="{$template_path}img/search_start.gif" border="0" /></a>
     </td>
   </tr>
 </table>
-</form>		
+</form>
 
 {else}
 
@@ -132,8 +132,8 @@
 
 </div>
 </div>
-</div>				 
-  
+</div>
+
 <br />
 <div style="width:95%;height:1px;border-top:1px solid #eeeeee;font-size:0px;"></div>
 <div style="width:95%;border-top:2px solid #eeeeee;font-size:0px;"></div>
@@ -141,7 +141,7 @@
 <br />
   <div style="border:1px solid #d2d2d2;width:91%;padding:15px;font-size:16px;">
     <b>Didn't find what you were looking for?</b><br />
-    <form name="search_form2" method="GET" action="/search.php">
+    <form name="search_form2" method="GET" action="search.php">
     <input type="hidden" name="go">
 	<table width="100%" style="padding-top:10px;">
 	  <tr>
@@ -153,13 +153,13 @@
 		          {$bookcategory}
 			</select>
 		</td>
-		<td><a href="javascript:void(0);" onclick="document.search_form2.submit();"><img src="/{$template_path}img/search_go.gif" border="0" /></a> </td>
-		<td> <b>Or, post an add for a <a href="/add_wproduct.php" style="color:#2d4f94;font-size:17px;">Items Wanted</a></b></td>
+		<td><a href="javascript:void(0);" onclick="document.search_form2.submit();"><img src="{$template_path}img/search_go.gif" border="0" /></a> </td>
+		<td> <b>Or, post an add for a <a href="add_wproduct.php" style="color:#2d4f94;font-size:17px;">Items Wanted</a></b></td>
 	  </tr>
 	</table>
 	</form>
   </div>
-  
+
 </td>
 
 </tr>
@@ -171,8 +171,8 @@
 
 </div>
 </div>
-</div>		
-				     
+</div>
+
 {/if}
 
-{include file='footer.tpl'}		
+{include file='footer.tpl'}

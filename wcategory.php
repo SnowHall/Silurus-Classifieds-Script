@@ -7,15 +7,15 @@
  * @website		http://snowhall.com/silurus
  * @email		support@snowhall.com
  * 
- * @version		1.0
- * @date		May 7, 2009
+ * @version		2.0
+ * @date		March 7, 2013
  * 
  * Silurus is a professionally developed PHP Classifieds script that was built for you.
  * Whether you are running classifieds for autos, motorcycles, bicycles, rv's, guns,
  * horses, or general merchandise, our product is the right package for you.
  * It has template system and no limit to usage with free for any changes.
  *
- * Copyright (c) 2009
+ * Copyright (c) 2009-2013
  */
 
 include("./include_php/init.php");
@@ -34,7 +34,7 @@ while($arr = mysql_fetch_assoc($q))
 {
 	$rel_categ[$arr['ID']] = $arr;
 }	
-$curUrl = '/wcategory.php?';    
+$curUrl = 'wcategory.php?';    
 $smarty->assign("rel_categ",  $rel_categ);
 $smarty->assign("cur_url",  $curUrl);
 
@@ -97,7 +97,7 @@ include("./ap_contact.php");
 
 
 $HEADERTEXT='Wanted Products';
-addNavigation('/wcategory.php',$HEADERTEXT);
+addNavigation('wcategory.php',$HEADERTEXT);
 if(isset($categ['Title'])) 
 {
 	addNavigation('',$categ['Title']);

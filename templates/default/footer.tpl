@@ -1,10 +1,10 @@
-		  </td>		  
-		</tr>			  		
+		  </td>
+		</tr>
 	  </table>
 	</td>
 	<td>&nbsp;</td>
-  </tr>  
-  
+  </tr>
+
   <tr height="15px"><td colspan="3">&nbsp;</td></tr>
   <tr>
     <td>&nbsp;</td>
@@ -16,12 +16,12 @@
 		  </td>
 		  <td width="50">&nbsp;</td>
 		  <td valign="top" class="footer_menu_main" align="right" nowrap>
-			<a href="/simple.php?ID=1" class="f_pass">Terms of Use</a>&nbsp;&nbsp;| &nbsp;&nbsp;
-				<a href="/simple.php?ID=2" class="f_pass">Privacy Policy</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-				<a href="/simple.php?ID=3" class="f_pass">About Us</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-				<a href="/faq.php" class="f_pass">FAQ</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-				<a href="/simple.php?ID=5" class="f_pass">Contact Us</a>&nbsp;&nbsp;	
-				{if !$memberID}|&nbsp;&nbsp;<a href="/join_form.php" class="f_pass">Sign Up</a> &nbsp;&nbsp;&nbsp;{/if}    
+			<a href="simple.php?ID=1" class="f_pass">Terms of Use</a>&nbsp;&nbsp;| &nbsp;&nbsp;
+				<a href="simple.php?ID=2" class="f_pass">Privacy Policy</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<a href="simple.php?ID=3" class="f_pass">About Us</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<a href="faq.php" class="f_pass">FAQ</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<a href="simple.php?ID=5" class="f_pass">Contact Us</a>&nbsp;&nbsp;
+				{if !$memberID}|&nbsp;&nbsp;<a href="join_form.php" class="f_pass">Sign Up</a> &nbsp;&nbsp;&nbsp;{/if}
 		  </td>
 		</tr>
 	  </table>
@@ -32,7 +32,7 @@
   <tr height="96px">
     <td class="p_footer_blue">&nbsp;</td>
 	<td width="990px" class="p_footer" valign="top" align="right">
-	{if $_GCONFIG.site_license==''}<span style="color:#2d4f94;font-size:13px;"> Powered by <a href="http://snowhall.com/silurus" style="color:#2d4f94;font-size:13px;">Silurus</a> &copy; <a href="http://snowhall.com" style="color:#2d4f94;font-size:13px;">SnowHall.com</a>  </span>{/if}</td>
+	<span style="color:#2d4f94;font-size:13px;"> Powered by <a href="http://snowhall.com/slides/silurus" style="color:#2d4f94;font-size:13px;">Silurus Free Classifieds Script</a></span></td>
 	<td class="p_footer_blue">&nbsp;</td>
   </tr>
 </table>

@@ -1,23 +1,23 @@
 <?php
 /**
  * Silurus Classifieds Builder
- * 
- * 
+ *
+ *
  * @author		SnowHall - http://snowhall.com
  * @website		http://snowhall.com/silurus
  * @email		support@snowhall.com
- * 
- * @version		1.0
- * @date		May 7, 2009
- * 
+ *
+ * @version		2.0
+ * @date		March 7, 2013
+ *
  * Silurus is a professionally developed PHP Classifieds script that was built for you.
  * Whether you are running classifieds for autos, motorcycles, bicycles, rv's, guns,
  * horses, or general merchandise, our product is the right package for you.
  * It has template system and no limit to usage with free for any changes.
  *
- * Copyright (c) 2009
+ * Copyright (c) 2009-2013
  */
- 
+
 include("./include_php/init.php");
 include("./include_php/TemplVotingView.php");
 
@@ -25,11 +25,11 @@ include("./include_php/TemplVotingView.php");
 if(isset($_GET['flag']))
 {
 	mysql_query("insert into Flags set date=".time().",userID=".$_SESSION['memberID'].",type=1,itemID=".intval($_REQUEST['ID']));
-	header("location: /product.php?ID=".intval($_REQUEST['ID']));
+	header("location: product.php?ID=".intval($_REQUEST['ID']).(isset($_GET['demo'])?'&demo=1':''));
 }
 
 $book = mysql_fetch_assoc(mysql_query("select * from Store where type=0 and  ID=".intval($_REQUEST['ID'])));
-if(!$book || intval($book['ID']) == 0) header("location: /profile.php");
+if(!$book || intval($book['ID']) == 0) header("location: profile.php".(isset($_GET['demo'])?'?demo=1':''));
 $seller = mysql_fetch_assoc(mysql_query("select * from Profiles where ID=".intval($book['userID'])));
 
 $photos = array();
@@ -53,7 +53,7 @@ while($prop = mysql_fetch_assoc($q))
 		$qq = mysql_query("select n.* from StorePropMulti n inner join StorePropValues v on v.Value=n.ID where v.PropID=".intval($prop['ID'])." and v.itemID=".$book['ID']);
 		while($subprop = mysql_fetch_assoc($qq))
 			$subitems[] = $subprop['Name'];
-		
+
 	}
 	elseif($prop['Type'] == 5)
 	{
@@ -64,11 +64,11 @@ while($prop = mysql_fetch_assoc($q))
 	elseif($prop['Type'] == 4)
 	{
 		$qq = mysql_fetch_assoc(mysql_query("select * from StorePropValues where PropID=".intval($prop['ID'])." and itemID=".$book['ID']));
-		$subitems = $qq['Value'];		
+		$subitems = $qq['Value'];
 		$oVotingView->_fRate = $subitems;
 		$subitems = $oVotingView->getSmallVoting (0,'');
 	}
-	else 
+	else
 	{
 		$qq = mysql_fetch_assoc(mysql_query("select * from StorePropValues where PropID=".intval($prop['ID'])." and itemID=".$book['ID']));
 		$subitems = $qq['Value'];
@@ -88,8 +88,9 @@ include("./ap_contact.php");
 include("./ap_tell.php");
 
 $HEADERTEXT='Product for Sale';
-addNavigation('/category.php','Products for Sale');
+addNavigation('category.php','Products for Sale');
 addNavigation('',$book['Title']);
+$smarty->assign("moderate_advertising",$gConfig['moderate_advertising']);
 $smarty->assign("site_title",  $book['Title']." :: ".$gConfig['site_title']);
 $smarty->assign("HEADERTEXT",  $HEADERTEXT);
 show_smarty_template('product');

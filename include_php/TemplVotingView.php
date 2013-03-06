@@ -7,15 +7,15 @@
  * @website		http://snowhall.com/silurus
  * @email		support@snowhall.com
  * 
- * @version		1.0
- * @date		May 7, 2009
+ * @version		2.0
+ * @date		March 7, 2013
  * 
  * Silurus is a professionally developed PHP Classifieds script that was built for you.
  * Whether you are running classifieds for autos, motorcycles, bicycles, rv's, guns,
  * horses, or general merchandise, our product is the right package for you.
  * It has template system and no limit to usage with free for any changes.
  *
- * Copyright (c) 2009
+ * Copyright (c) 2009-2013
  */
 
 class DolMistake 
@@ -490,7 +490,7 @@ EOF;
 			$sRet .= '<div class="votes_buttons">';
 			for ($i=1 ; $i<=$iMax ; ++$i)
 			{
-				$sRet .= '<a href="javascript:'.$i.';void(0);" onmouseover="oVoting'.$sDivId.'.over('.$i.');" onmouseout="oVoting'.$sDivId.'.out();" onclick="oVoting'.$sDivId.'.vote('.$i.')"><img class="votes_button_'.$sName.'" src="/img/vote_star_null.gif" /></a>';
+				$sRet .= '<a href="javascript:'.$i.';void(0);" onmouseover="oVoting'.$sDivId.'.over('.$i.');" onmouseout="oVoting'.$sDivId.'.out();" onclick="oVoting'.$sDivId.'.vote('.$i.')"><img class="votes_button_'.$sName.'" src="img/vote_star_null.gif" /></a>';
 			}
 			$sRet .= '</div>';
 		}

@@ -7,21 +7,23 @@
  * @website		http://snowhall.com/silurus
  * @email		support@snowhall.com
  * 
- * @version		1.0
- * @date		May 7, 2009
+ * @version		2.0
+ * @date		March 7, 2013
  * 
  * Silurus is a professionally developed PHP Classifieds script that was built for you.
  * Whether you are running classifieds for autos, motorcycles, bicycles, rv's, guns,
  * horses, or general merchandise, our product is the right package for you.
  * It has template system and no limit to usage with free for any changes.
  *
- * Copyright (c) 2009
+ * Copyright (c) 2009-2013
  */
  
-$config = $_SERVER['DOCUMENT_ROOT']."/dbconfig.inc";
+$baseDir = dirname(realpath(__FILE__));
+
+$config = $baseDir."/../dbconfig.inc";
 if(!is_file($config))
 {
-	header("location: /install.php");
+	header("location: install.php");
 	die();
 }
 else
@@ -29,12 +31,12 @@ else
 	$config = join("",file($config));
 	if(trim($config)=='')
 	{
-		header("location: /install.php");
+		header("location: install.php");
 		die();
 	}
 	else 
 	{
-		if(is_file($_SERVER['DOCUMENT_ROOT']."/install.php")) 
+		if(is_file($baseDir."/../install.php")) 
 		{
 			print '<center><br><br><b>Please remove install.php</b></center>';
 			die();

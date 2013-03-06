@@ -13,7 +13,7 @@
 	  &nbsp;&nbsp;&nbsp;&nbsp;<span class="big_verdana">Optional Information:</span>
 	  {/if}
 	</td>
-	<td>&nbsp;</td>	
+	<td>&nbsp;</td>
   </tr>
   <tr>
     <td colspan="2" class="book_tab" style="background:#e6e5e5;" valign="top">
@@ -29,7 +29,7 @@
 	    <tr>
 	      <td>
 	        Category<br>
-	        <select name="categoryID" style="width:420px;" onchange="window.location='{$_SERVER.PHP_SELF}?categoryID='+this.value;">
+	        <select name="categoryID" style="width:420px;" onchange="top.window.location='{$_SERVER.PHP_SELF}?categoryID='+this.value;">
 			  {$categ_list}
 			</select>
 	      </td>
@@ -43,7 +43,16 @@
 	      </td>
 	    </tr>
 	    <tr><td>&nbsp; </td></tr>
-	  {foreach from=$req_props item=oItem} 
+      {if $_SESSION.memberID == 0}
+        <tr>
+            <td>
+                Password (for managing your advertising in the future)<br>
+                <input type="password" style="{if $_SERVER.REQUEST_METHOD=='POST'&&$_REQUEST.password==''}background:#ff0000;{/if}width:420px" name="password" />
+            </td>
+        </tr>
+        <tr><td>&nbsp; </td></tr>
+        {/if}
+	  {foreach from=$req_props item=oItem}
 	    <tr>
 	      <td  style="{if $oItem.Type==7}{$oItem.color}th{/if}">
 	        {$oItem.Name}<br>
@@ -56,7 +65,7 @@
 	        {if $oItem.Type==3}
 	          {if $oItem.error && $oItem.error!=''}<font color=red>{$oItem.error}</font><br>{/if}
 	           <table width="100%" style="padding-top:10px;">
-				  <tr><td>{if $oItem.photo!=''}<img src="/media/store/small_{$oItem.photo}" style="width:50px;"><br><input type="checkbox" name="delphoto{$oItem.ID}" value="1"> delete{/if}</td><td><input type="file" name="prop{$oItem.ID}" style="width:320px"/></td></tr>				  
+				  <tr><td>{if $oItem.photo!=''}<img src="media/store/small_{$oItem.photo}" style="width:50px;"><br><input type="checkbox" name="delphoto{$oItem.ID}" value="1"> delete{/if}</td><td><input type="file" name="prop{$oItem.ID}" style="width:320px"/></td></tr>
 			  </table>
 	        {/if}
 	        {if $oItem.Type==4}
@@ -64,45 +73,45 @@
 	        {/if}
 	        {if $oItem.Type==5}
 	            <select name="prop{$oItem.ID}" style="{$oItem.color}width:420px;" >
-				  {foreach from=$oItem.subprop item=oSub} 
+				  {foreach from=$oItem.subprop item=oSub}
 				    <option value="{$oSub.ID}" {if $oSub.ID==$oItem.entered}selected{/if}>{$oSub.Name}</option>
 				  {/foreach}
 				</select>
 	        {/if}
 	        {if $oItem.Type==6}
 	          <select name="prop{$oItem.ID}[]" style="{$oItem.color}width:420px;height:100px;" multiple>
-				  {foreach from=$oItem.subprop item=oSub} 
+				  {foreach from=$oItem.subprop item=oSub}
 				    <option value="{$oSub.ID}" {if is_array($oItem.entered)&&in_array($oSub.ID,$oItem.entered)}selected{/if}>{$oSub.Name}</option>
 				  {/foreach}
 			  </select>
 	        {/if}
 	        {if $oItem.Type==7}
-	              {foreach from=$oItem.subprop item=oSub} 
+	              {foreach from=$oItem.subprop item=oSub}
 				    <input type="checkbox" name="prop{$oItem.ID}[]" value="{$oSub.ID}" {if is_array($oItem.entered)&&in_array($oSub.ID,$oItem.entered)}checked{/if}>{$oSub.Name} &nbsp;
 				  {/foreach}
 	        {/if}
 	      </td>
-	    </tr>	    
+	    </tr>
 	    <tr><td>&nbsp; </td></tr>
-	  {/foreach}	
+	  {/foreach}
 	  {if !$_REQUEST.ID && $_GCONFIG.capcha_item==1}
 	    <tr>
 	      <td>
 	        Enter what you see:<br>
-			  <img alt="Security Image" src="/simg/simg.php" /><br>
-			  <input name="securityImageValue" type="text" size="15" style="{if $securityImageValueError}background:#ff0000;{/if}"> 
+			  <img alt="Security Image" src="simg/simg.php" /><br>
+			  <input name="securityImageValue" type="text" size="15" style="{if $securityImageValueError}background:#ff0000;{/if}">
 	      </td>
 	    </tr>
 	    <tr><td>&nbsp; </td></tr>
-	    {/if}    
-	  </table> 
+	    {/if}
+	  </table>
 	</td>
 	<td width="20px">&nbsp;</td>
-	
+
 	<td colspan="2" class="book_tab" valign="top">
 	{if $props && !empty($props)}
 	  <table width="100%">
-	  {foreach from=$props item=oItem} 
+	  {foreach from=$props item=oItem}
 	    <tr>
 	      <td>
 	        {$oItem.Name}<br>
@@ -115,7 +124,7 @@
 	        {if $oItem.Type==3}
 	          {if $oItem.error && $oItem.error!=''}<font color=red>{$oItem.error}</font><br>{/if}
 	           <table width="100%" style="padding-top:10px;">
-				  <tr><td>{if $oItem.photo!=''}<img src="/media/store/small_{$oItem.photo}" style="width:50px;"><br><input type="checkbox" name="delphoto{$oItem.ID}" value="1"> delete{/if}</td><td><input type="file" name="prop{$oItem.ID}" style="width:320px"/></td></tr>				  
+				  <tr><td>{if $oItem.photo!=''}<img src="media/store/small_{$oItem.photo}" style="width:50px;"><br><input type="checkbox" name="delphoto{$oItem.ID}" value="1"> delete{/if}</td><td><input type="file" name="prop{$oItem.ID}" style="width:320px"/></td></tr>
 			  </table>
 	        {/if}
 	        {if $oItem.Type==4}
@@ -123,53 +132,53 @@
 	        {/if}
 	        {if $oItem.Type==5}
 	            <select name="prop{$oItem.ID}" style="{$oItem.color}width:420px;" >
-				  {foreach from=$oItem.subprop item=oSub} 
+				  {foreach from=$oItem.subprop item=oSub}
 				    <option value="{$oSub.ID}" {if $oSub.ID==$oItem.entered}selected{/if}>{$oSub.Name}</option>
 				  {/foreach}
 				</select>
 	        {/if}
 	        {if $oItem.Type==6}
 	          <select name="prop{$oItem.ID}[]" style="{$oItem.color}width:420px;" multiple>
-				  {foreach from=$oItem.subprop item=oSub} 
+				  {foreach from=$oItem.subprop item=oSub}
 				    <option value="{$oSub.ID}" {if is_array($oItem.entered)&&in_array($oSub.ID,$oItem.entered)}selected{/if}>{$oSub.Name}</option>
 				  {/foreach}
 			  </select>
 	        {/if}
 	        {if $oItem.Type==7}
-	              {foreach from=$oItem.subprop item=oSub} 
+	              {foreach from=$oItem.subprop item=oSub}
 				    <input type="checkbox" name="prop{$oItem.ID}[]" value="{$oSub.ID}" {if is_array($oItem.entered)&&in_array($oSub.ID,$oItem.entered)}checked{/if}>{$oSub.Name} &nbsp;
 				  {/foreach}
 	        {/if}
 	      </td>
 	    </tr>
 	    <tr><td>&nbsp; </td></tr>
-	  {/foreach}	    
-	  </table>   
-	  {/if}	
+	  {/foreach}
+	  </table>
+	  {/if}
 	</td>
-	
+
   </tr>
-    
+
   <tr>
-    <td colspan="2" style="background:#e6e5e5;">&nbsp;	
-	  
+    <td colspan="2" style="background:#e6e5e5;">&nbsp;
+
 	</td>
 	<td width="20px">&nbsp;</td>
   </tr>
-  
+
   <tr>
     <td colspan="5">
 	  <br /><br /><div class="dotted_line"></div>
     </td>
   </tr>
   <tr>
-    <td align="right" colspan="5"><br />       
-	   <a href="/profile.php"><img src="/{$template_path}img/prof_edit_back.gif" border="0" /></a>&nbsp;&nbsp;
-	   <a href="javascript:void(0);" onclick="document.book_wanted_form.submit();"><img src="/{$template_path}img/book_post_go.gif" border="0" /></a>
+    <td align="right" colspan="5"><br />
+	   <a href="profile.php"><img src="{$template_path}img/prof_edit_back.gif" border="0" /></a>&nbsp;&nbsp;
+	   <a href="javascript:void(0);" onclick="document.book_wanted_form.submit();"><img src="{$template_path}img/book_post_go.gif" border="0" /></a>
     </td>
   </tr>
-</table>  
-</form>						
+</table>
+</form>
 
-	     
-{include file='footer.tpl'}		
+
+{include file='footer.tpl'}

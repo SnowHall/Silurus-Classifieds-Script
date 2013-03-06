@@ -7,15 +7,15 @@
  * @website		http://snowhall.com/silurus
  * @email		support@snowhall.com
  * 
- * @version		1.0
- * @date		May 7, 2009
+ * @version		2.0
+ * @date		March 7, 2013
  * 
  * Silurus is a professionally developed PHP Classifieds script that was built for you.
  * Whether you are running classifieds for autos, motorcycles, bicycles, rv's, guns,
  * horses, or general merchandise, our product is the right package for you.
  * It has template system and no limit to usage with free for any changes.
  *
- * Copyright (c) 2009
+ * Copyright (c) 2009-2013
  */
 
 include("../include_php/admin_init.php");
@@ -29,19 +29,19 @@ if(isset($_POST['editID']))
 {	
 	$Photo = '';		
 	mysql_query("update TTips set Title='".mysql_escape_string($_POST['Title'])."',Text='".mysql_escape_string($_POST['Text'])."' where ID=".intval($_POST['editID']));	
-	header("location: /admin/ttips.php");
+	header("location: {$gConfig['site_url']}admin/ttips.php");
 }
 
 if(isset($_POST['goadd']) && trim($_POST['Title'])!='')
 {
 	mysql_query("insert into TTips set Title='".mysql_escape_string($_POST['Title'])."',Text='".mysql_escape_string($_POST['Text'])."'");
-	header("location: /admin/ttips.php");
+	header("location: {$gConfig['site_url']}admin/ttips.php");
 }
 
 if(isset($_GET['del']) && intval($_GET['ID']) > 0)
 {
 	mysql_query("delete from TTips  where ID=".intval($_GET['ID']));
-	header("location: /admin/ttips.php");
+	header("location: {$gConfig['site_url']}admin/ttips.php");
 }
 $action = $_GET['action'];
  
@@ -79,17 +79,17 @@ function getList( $iArticleID = '' )
 {
 	global $site;
 	
-	$ret = '<a href="/admin/ttips.php?action=add">Add tip</a><br><br>
+	$ret = '<a href="' . $gConfig['site_url'] . 'admin/ttips.php?action=add">Add tip</a><br><br>
 	<b>Technical Tips page preface</b><hr><table width=100%>';
 	$q = mysql_query("select * from TTips where ID=-1");
 	$a = mysql_fetch_assoc($q);
-	$ret.='<tr><td valign=top><b>'.$a['Title'].'</b></td><td valign=top><a href="/admin/ttips.php?action=edit&ID='.$a['ID'].'">Edit</a><br><br></td></tr>
+	$ret.='<tr><td valign=top><b>'.$a['Title'].'</b></td><td valign=top><a href="admin/ttips.php?action=edit&ID='.$a['ID'].'">Edit</a><br><br></td></tr>
 	<tr><td colspan=10><b>Technical Tips</b><hr></td></td>';
 	
 	$q = mysql_query("select * from TTips where ID>0 order by ID");
 	while($a = mysql_fetch_assoc($q))
 	{
-		$ret.='<tr><td valign=top><b>'.$a['Title'].'</b></td><td valign=top><a href="/admin/ttips.php?action=edit&ID='.$a['ID'].'">Edit</a> &nbsp;&nbsp;&nbsp;<a href="/admin/ttips.php?del&ID='.$a['ID'].'">Delete</a></td></tr>';
+		$ret.='<tr><td valign=top><b>'.$a['Title'].'</b></td><td valign=top><a href="admin/ttips.php?action=edit&ID='.$a['ID'].'">Edit</a> &nbsp;&nbsp;&nbsp;<a href="admin/ttips.php?del&ID='.$a['ID'].'">Delete</a></td></tr>';
 	}
 	$ret.='</table>';
 	return  $ret;

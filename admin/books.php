@@ -1,21 +1,21 @@
 <?php
 /**
  * Silurus Classifieds Builder
- * 
- * 
+ *
+ *
  * @author		SnowHall - http://snowhall.com
  * @website		http://snowhall.com/silurus
  * @email		support@snowhall.com
- * 
- * @version		1.0
- * @date		May 7, 2009
- * 
+ *
+ * @version		2.0
+ * @date		March 7, 2013
+ *
  * Silurus is a professionally developed PHP Classifieds script that was built for you.
  * Whether you are running classifieds for autos, motorcycles, bicycles, rv's, guns,
  * horses, or general merchandise, our product is the right package for you.
  * It has template system and no limit to usage with free for any changes.
  *
- * Copyright (c) 2009
+ * Copyright (c) 2009-2013
  */
 
 include("../include_php/admin_init.php");
@@ -34,13 +34,13 @@ if(isset($_GET['del']) && intval($_GET['ID']) > 0)
 		unlink( '../media/store/small_'.$arr['Value'] );
 	}
 	mysql_query( "delete from StorePropValues where itemID=".intval($_GET['ID']) );
-	mysql_query( "delete from Store where ID=".intval($_GET['ID']) );	
-	
-	header("location: /admin/books.php");
+	mysql_query( "delete from Store where ID=".intval($_GET['ID']) );
+
+	header("location: {$gConfig['site_url']}admin/books.php");
 }
 $action = $_GET['action'];
- 
-	
+
+
 $smarty->assign("page_content",  getArticlesAdminContent());
 $smarty->display('index.tpl');
 
@@ -58,13 +58,13 @@ function getArticlesAdminContent()
 
 function getList( $iArticleID = '' )
 {
-	global $site;
-	
-	$ret = '<a href="/admin/books.php">All by create date</a><br><form method="GET">Search by title: <input type="text" name="searchID"> <input type=submit name=find value="Find"></form><br><br>
-	<table width=100%>';	
-		
+	global $site, $gConfig;
+
+	$ret = '<a href="' . $gConfig['site_url'] . 'admin/books.php">All by create date</a><br><form method="GET">Search by title: <input type="text" name="searchID"> <input type=submit name=find value="Find"></form><br><br>
+	<table width=100%>';
+
 	$iDivis = 20;
-	$iCurr  = 1;	
+	$iCurr  = 1;
 	if (!isset($_REQUEST['commPage']))
 	{
 		$sLimit =  ' LIMIT 0,'.$iDivis;
@@ -74,22 +74,22 @@ function getList( $iArticleID = '' )
 		if($_REQUEST['commPage']<=0) $_REQUEST['commPage'] = 1;
 		$iCurr = (int)$_REQUEST['commPage'];
 		$sLimit =  ' LIMIT '.($iCurr - 1)*$iDivis.','.$iDivis;
-	}			
-	$sQuery = "select b.*,p.NickName,p.ID uID from Store b inner join Profiles p on p.ID=b.userID where b.ID>0 ".(trim($_GET['searchID'])!=''?' and (b.Title like "%'.mysql_escape_string($_GET['searchID']).'%" ) ':'')." and type=0 order by b.ID desc";	
-	$rElems = mysql_query( $sQuery );		
-	$iNums = mysql_num_rows($rElems);	
+	}
+	$sQuery = "select b.*,p.NickName,p.ID uID from Store b inner join Profiles p on p.ID=b.userID where b.ID>0 ".(trim($_GET['searchID'])!=''?' and (b.Title like "%'.mysql_escape_string($_GET['searchID']).'%" ) ':'')." and type=0 order by b.ID desc";
+	$rElems = mysql_query( $sQuery );
+	$iNums = mysql_num_rows($rElems);
 	$count = (int)($iNums/$iDivis);
 	if(($iNums/$iDivis) > (int)($iNums/$iDivis)) $count++;
-	$nav =  ($iNums > $iDivis ? commentNavigation($iNums,$iDivis,$iCurr,'','commPage') : '');	
-	$rElems = mysql_query( $sQuery.$sLimit );	
-		   
+	$nav =  ($iNums > $iDivis ? commentNavigation($iNums,$iDivis,$iCurr,'','commPage') : '');
+	$rElems = mysql_query( $sQuery.$sLimit );
+
 	$ret.='<tr><td valign=top><b>Title</b></td><td valign=top><b>Date</b></td><td valign=top><b>Author</b></td><td valign=top></td></tr>';
 	while($book = mysql_fetch_assoc($rElems))
 	{
-		$ret.='<tr><td valign=top><a href="/product.php?ID='.$book['ID'].'" target="blank">'.$book['Title'].'</a></td>
+		$ret.='<tr><td valign=top><a href="product.php?ID='.$book['ID'].'" target="blank">'.$book['Title'].'</a></td>
 		<td valign=top nowrap>'.date("d-m-Y H:i",$book['date']).' </td>
-		<td valign=top> <a href="/profile.php?ID='.$book['uID'].'" target="blank">'.$book['NickName'].'</a></td>
-		<td valign=top>&nbsp;&nbsp;&nbsp;<a href="javascript:if(confirm(\'Delete product?\')) window.location=\'/admin/books.php?del&ID='.$book['ID'].'\';">Delete</a></td></tr>';
+		<td valign=top> <a href="profile.php?ID='.$book['uID'].'" target="blank">'.$book['NickName'].'</a></td>
+		<td valign=top>&nbsp;&nbsp;&nbsp;<a href="javascript:if(confirm(\'Delete product?\')) top.window.location=\'' . $gConfig['site_url'] . '/admin/books.php?del&ID='.$book['ID'].(isset($_GET['demo'])?'&demo=1':'').'\';">Delete</a></td></tr>';
 	}
 	$ret.='</table><br><br>'.$nav;
 	return  $ret;

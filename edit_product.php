@@ -7,24 +7,24 @@
  * @website		http://snowhall.com/silurus
  * @email		support@snowhall.com
  * 
- * @version		1.0
- * @date		May 7, 2009
+ * @version		2.0
+ * @date		March 7, 2013
  * 
  * Silurus is a professionally developed PHP Classifieds script that was built for you.
  * Whether you are running classifieds for autos, motorcycles, bicycles, rv's, guns,
  * horses, or general merchandise, our product is the right package for you.
  * It has template system and no limit to usage with free for any changes.
  *
- * Copyright (c) 2009
+ * Copyright (c) 2009-2013
  */
 
 include("./include_php/init.php");
 include("./include_php/TemplVotingView.php");
 
-if($_SESSION['memberID'] == 0) header("location: /");
+if($_SESSION['memberID'] == 0) header("location: index.php");
 	
 $info = mysql_fetch_array(mysql_query("select * from Store where userID=".$_SESSION['memberID']." and ID=".intval($_REQUEST['ID'])));
-if(!$info) header("location: /profile.php");
+if(!$info) header("location: profile.php");
 if($_SERVER['REQUEST_METHOD'] == 'POST')
 {
 	$err = array();
@@ -142,7 +142,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 			elseif ($prop['Type']==3 && isset($photos[$prop['ID']]))
 				mysql_query("insert into StorePropValues set PropID=".$prop['ID'].",itemID=".$newID.",Value='".$photos[$prop['ID']]."'");
 		}
-		header("location: /product.php?ID=".$newID); die();
+		header("location: product.php?ID=".$newID); die();
 	}
 	$smarty->assign("error",  $err);
 }
@@ -223,7 +223,7 @@ $smarty->assign("req_props",  $req_props);
 $smarty->assign("props",  $props);
 
 $HEADERTEXT='Edit Product for Sale';
-addNavigation('/profile.php?ID='.$_SESSION['memberID'],'My Profile');
+addNavigation('profile.php?ID='.$_SESSION['memberID'],'My Profile');
 addNavigation('',$HEADERTEXT);
 $smarty->assign("site_title",  $HEADERTEXT." :: ".$gConfig['site_title']);
 $smarty->assign("HEADERTEXT",  $HEADERTEXT);
